@@ -1,0 +1,27 @@
+{{!-- Navbar --}}
+<nav class="navbar navbar-expand-md navbar-light py-1 sticky-top" style="background-color:rgb(235, 199, 165);">
+
+    <a class="navbar-brand ms-3" href="/regHome"><img src="https://drive.google.com/uc?id=1A3VFZ3INGVeWkVpx7LOi8nfo2QdTsmhj" width="20" height="20" alt="">CookShare</a>
+    
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        {{!-- Center items --}}
+        <ul class="navbar-nav ms-auto">
+            <li class="nav-center"><a class="nav-link" href="/regHome">Αρχική</a></li>
+
+            <li class="nav-center px-2"><a class="nav-link" href="/regAbout">Ποιοι είμαστε</a></li>
+
+            <li class="nav-center"><a class="nav-link" href="/regContact">Επικοινωνία</a></li>
+        </ul>
+
+        {{!-- Right end items --}}
+        <ul class="navbar-nav ms-auto me-1">
+            <li class="nav-end"><a class="all-buttons btn btn-secondary" href="/regProfile" role="button"><i class="fas fa-user-circle"></i> Προφίλ</a></li>
+        </ul>
+
+    </div>
+</nav>
+{{!-- End navbar --}}

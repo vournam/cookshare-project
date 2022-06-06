@@ -1,0 +1,289 @@
+html {
+font-size: 16px;
+}
+
+body {
+    background-color: rgba(158, 90, 45, 0.747);
+}
+
+/* 1. Homepage - non registered user */
+#site-title {
+    font-size: 4rem;
+}
+
+#description {
+    font-size: 2rem;
+}
+
+/* Search area */
+.search-main {
+    padding-bottom: 1rem;
+}
+
+.search-main form {
+    background-color:  rgb(138, 102, 67);
+    border-radius: 10px;
+    border: 2rem solid rgb(138, 102, 67);
+}
+
+.basic-ingredient {
+    width:100%;
+    height: 100%;
+    padding: 12px 40px 12px 40px;
+    text-align: left;
+    color: black;
+    text-decoration: none;
+    background-color: rgb(255, 255, 255);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-right: 2px solid grey;
+}
+
+.categories {
+    width:100%;
+    height: 100%;
+    padding: 12px 40px 12px 40px;
+    text-align: left;
+    color: black;
+    text-decoration: none;
+    background-color: rgb(255, 255, 255);
+    border-right: 2px solid grey;
+}
+
+.categories:hover {
+    cursor: pointer;
+}
+
+.search {
+    background-color: rgb(117, 111, 111);
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.search a {
+    width: 100%;
+    padding: 12px 40px 12px 40px;
+    display: block;
+    text-align: center;
+    color: white;
+    text-decoration: none;
+}
+
+.search:hover {
+    background-color: rgb(175, 170, 170);
+}
+
+.search a:hover {
+    color:black;
+}
+/* End search area*/
+
+.all-buttons:hover {
+    background-color: rgb(175, 170, 170);
+    border: 1px solid rgb(175, 170, 170);
+}
+
+.all-buttons:focus{
+    box-shadow: none;
+}
+
+.logout {
+    text-decoration: none;
+    background-color: #ddd;
+    color: #000000;
+}
+/* User's feed */
+    .feed {
+    background: #333;
+    color: #ddd;
+    }
+    .feed h1 {
+    color: white;
+    font-size: 1.2rem;
+    text-align: center;
+    text-shadow: 0px 2px 0px #000000;
+}  
+/* End user's feed */
+
+/* 2. Homepage - registered user */
+/* Add-recipe button */
+.add-recipe {
+    background-color:  rgb(138, 102, 67);
+    border-radius: 10px;
+    border: 0.8rem solid rgb(138, 102, 67);
+    text-decoration: none;
+    color: black;
+}
+
+.add-recipe:hover {
+    background-color:  rgb(150, 115, 80);
+    border: 0.8rem solid rgb(150, 115, 80);
+    color: black;
+}
+/* End add-recipe button*/
+
+/* 3. Sign-in page*/
+#sign-in-card {
+    border-radius: 10px;
+    background-color:rgba(255, 253, 253, 0.747);
+}
+
+#navigator-left,.navleft {
+    border-top-left-radius: 10px;
+}
+
+#navigator-right, .navright {
+    border-top-right-radius: 10px;
+}
+
+#pills-tabContent {
+    border-radius: 10px;
+    width: 30rem;
+}
+
+.btn-dark {
+    color: #fff;
+    background-color: rgb(117, 111, 111);
+    border-color: rgb(117, 111, 111);
+}
+
+.btn-dark:hover {
+    color: #fff;
+    background-color: rgb(175, 170, 170);
+    border-color: rgb(175, 170, 170);
+}
+
+.nav-pills {
+    display:table !important;
+    width:100%;
+}
+
+#navig-item {
+    display: table-cell;
+    background: rgb(230, 227, 227);;
+}
+
+.sign-in-form input:focus{
+    box-shadow: none;
+}
+
+/* 4. Single recipe page - non registered user*/
+.title {
+    font-size: 1.5rem;
+}
+
+.recipe-info {
+    font-size: 1.3rem;
+}
+
+#recipe-area {
+    max-width: 700px;
+}
+
+#card-img {
+    display: block;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* 5. Single recipe page - registered user*/
+/* Rating */
+.rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: center;
+}
+
+.rating>input {
+    display: none;
+}
+
+.rating>label {
+    position: relative;
+    width: 2rem;
+    font-size: 2rem;
+    color: #FFD600;
+    cursor: pointer;
+    caret-color: transparent;
+}
+
+.rating>label::before {
+    content: "\2605";
+    position: absolute;
+    opacity: 0;
+}
+
+.rating>label:hover:before,
+.rating>label:hover~label:before {
+    opacity: 1 !important
+}
+
+.rating>input:checked~label:before {
+    opacity: 1;
+}
+
+.rating:hover>input:checked~label:before {
+    opacity: 0.4;
+}
+/* End rating */
+
+#recipe-save {
+    font-size: 1.3rem;
+}
+
+/* Reviews */
+.reviews {
+    background-color: white;
+}
+
+#subtitle {
+    margin-left: 10px;
+    color: firebrick;
+}
+
+.commentlist {
+    list-style-type: none;
+}
+
+.user-comment {
+    font-size: 1.2rem; 
+    color: black;  
+    text-decoration: none;
+}
+
+.date {
+    line-height: 2.5;
+    margin-left: 1rem;
+    font-size: 0.8rem;
+    color: firebrick;
+}
+
+.rating-comments {
+    color: #FFD600;
+    font-size: 0.8rem;
+}
+
+.rating-comments i {
+    margin-right: 5px;
+}
+/* End reviews */
+
+/* Add comment */
+.add-comment {
+    background-color: white;
+}
+
+.add-comment input[type=text] { 
+    width: 80%;
+    padding: 12px 20px;
+    margin-right: 10px;
+    border-radius: 8px;
+}
+
+.add-comment input[type=submit] {
+    width: 17%;
+    padding: 6px 0;
+    border-radius: 8px;
+}
+/* End add comment */

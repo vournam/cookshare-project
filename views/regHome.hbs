@@ -1,0 +1,206 @@
+{{> regNavbar}}
+
+{{!-- Search area --}}
+<div class="search-main">
+    <div class="container-fluid px-0 pt-3">
+        <div class="z-index-2 py-5 px-5">
+            {{!-- Logo --}}
+            <div class="row">
+                <div class="col-12">
+                    <div class="logo text-center mb-5">
+                        <img src="https://drive.google.com/uc?id=1ikjbHt9ThIFHVtuIcWKrnAGQMc6SIhqE" alt="">
+                        <h1 id="site-title">CookShare</h1>
+                        <h3 id="description">+10,000 συνταγές μελών μας</h3>
+                    </div>
+                </div>
+            </div>
+            {{!-- Search button --}}
+            <div class="d-flex justify-content-center">
+                <form class="row no-gutters">
+                    <div class="col-md-4 px-0">
+                        <select class="form-control form-control-sm basic-ingredient" name="ingredient">
+                            <option value="" selected disabled hidden> Βασικό υλικό</option>
+                            <option value="" type="button">------------</option>
+                            <option value="pork" type="button">Χοιρινό</option>
+                            <option value="chicken" type="button">Κοτόπουλο</option>
+                            <option value="calf" type="button">Μοσχάρι</option>
+                            <option value="lamb" type="button">Αρνί</option>
+                            <option value="turkey" type="button">Γαλοπούλα</option>
+                            <option value="sweet" type="button">Κατσίκι</option>
+                            <option value="cheese" type="button">Τυρί</option>
+                            <option value="rice" type="button">Ρύζι</option>
+                            <option value="pasta" type="button">Ζυμαρικά</option>
+                            <option value="legumes" type="button">Όσπρια</option>
+                            <option value="fish" type="button">Ψάρι</option>
+                            <option value="potato" type="button">Πατάτα</option>
+                            <option value="egg" type="button">Αυγό</option>
+                            <option value="milk" type="button">Γάλα</option>
+                            <option value="butter" type="button">Βούτυρο</option>
+                            <option value="oil" type="button">Λάδι</option>
+                            <option value="tomato" type="button">Ντομάτα</option>
+                            <option value="carrot" type="button">Καρότο</option>
+                            <option value="eggplant" type="button">Μελιτζάνα</option>
+                            <option value="zucchini" type="button">Κολοκύθι</option>
+                            <option value="banana" type="button">Μπανάνα</option>
+                            <option value="apple" type="button">Μήλο</option>
+                            <option value="orange" type="button">Πορτοκάλι</option>
+                            <option value="strawberry" type="button">Φράουλα</option>
+                            <option value="honey" type="button">Μέλι</option>
+                            <option value="tahini" type="button">Ταχίνι</option>
+                            <option value="cocoa" type="button">Κακάο</option>
+                            <option value="nuts" type="button">Ξηροί καρποί</option>
+                            <option value="oats" type="button">Βρώμη</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 px-0">
+                        <select class="form-control form-control-sm categories text-nowrap" name="category" id="categories">
+                            <option value="" selected disabled hidden>Κατηγορία</option>
+                            <option value="" type="button">------------</option>
+                            <option value="breakfast" type="button">Πρωινό</option>
+                            <option value="brunch" type="button">Brunch</option>
+                            <option value="appetizer" type="button">Ορεκτικό</option>
+                            <option value="main" type="button">Κυρίως Γεύμα</option>
+                            <option value="dinner" type="button">Βραδινό</option>
+                            <option value="sweet" type="button">Γλυκά</option>
+                            <option value="savory" type="button">Αλμυρά</option>
+                            <option value="drink" type="button">Ροφήματα</option>
+                            <option value="snack" type="button">Snack</option>
+                            <option value="kids" type="button">Παιδικά</option>
+                            <option value="vegan" type="button">Vegan</option>
+                            <option value="light" type="button">Πιάτα Light</option>
+                            <option value="xmas" type="button">Χριστούγεννα</option>
+                            <option value="easter" type="button">Πάσχα</option>
+                        </select>
+                    </div>
+                    <div class="search col-md-4 px-0">
+                        <a class="box-shadow" href="/regSearch">Αναζήτηση</a>
+                    </div>        
+                </form>
+            </div>
+        </div>
+    </div>
+</div> 
+{{!-- End search area --}}
+
+{{!-- Add recipe button --}}
+<div class="d-flex justify-content-center pb-5">
+    <a class="add-recipe" href="/regAddRecipe" role="button"><i class="fa-solid fa-plus"></i> Προσθήκη συνταγής</a>
+</div> 
+{{!-- End add recipe button --}}
+
+{{!-- User's feed area --}}
+<section class=" feed pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h1>Εδώ βρίσκονται οι πιο πρόσφατες συνταγές των μελών μας.</h1>
+            </div>
+            <div class="col-6 text-end">
+                <a class="all-buttons btn btn-secondary mb-4 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <a class="all-buttons btn btn-secondary mb-4 " href="#carouselExampleIndicators2" role="button" data-slide="next">
+                    <i class="fa fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="col-12">
+                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="" src="https://drive.google.com/uc?id=1DpYd27NlHl8YOxN1flccZfyZemfB1ps9">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Special title treatment</h4>
+                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                            <a class="all-buttons btn btn-secondary mb-1 mr-1 d-flex justify-content-center" href="/regRecipe" role="button">Δες αναλυτικά</i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="" src="https://drive.google.com/uc?id=1rVkVa7CCrvellYtBMIYNuFsqWz_jvLIV">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Special title treatment</h4>
+                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                            <a class="all-buttons btn btn-secondary mb-1 mr-1 d-flex justify-content-center" href="/regRecipe" role="button">Δες αναλυτικά</i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="" src="https://drive.google.com/uc?id=16YSuPn7dDOZmstyGaTvKSPkrYeGoOMKK">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Special title treatment</h4>
+                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                            <a class="all-buttons btn btn-secondary mb-1 mr-1 d-flex justify-content-center" href="/regRecipe" role="button">Δες αναλυτικά</i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="" src="https://drive.google.com/uc?id=12rI7LMOdX1fGWX1clxVOyzp4LD0U6_1a">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Special title treatment</h4>
+                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                            <a class="all-buttons btn btn-secondary mb-1 mr-1 d-flex justify-content-center" href="/regRecipe" role="button">Δες αναλυτικά</i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+                                <div class="col-md-3 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="" src="https://drive.google.com/uc?id=16YSuPn7dDOZmstyGaTvKSPkrYeGoOMKK">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Special title treatment</h4>
+                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                            <a class="all-buttons btn btn-secondary mb-1 mr-1 d-flex justify-content-center" href="/regRecipe" role="button">Δες αναλυτικά</i></a>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="" src="https://drive.google.com/uc?id=12rI7LMOdX1fGWX1clxVOyzp4LD0U6_1a">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Special title treatment</h4>
+                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                            <a class="all-buttons btn btn-secondary mb-1 mr-1 d-flex justify-content-center" href="/regRecipe" role="button">Δες αναλυτικά</i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="" src="https://drive.google.com/uc?id=1rVkVa7CCrvellYtBMIYNuFsqWz_jvLIV">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Special title treatment</h4>
+                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                            <a class="all-buttons btn btn-secondary mb-1 mr-1 d-flex justify-content-center" href="/regRecipe" role="button">Δες αναλυτικά</i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 mb-3">
+                                    <div class="card">
+                                        <img class="img-fluid" alt="" src="https://drive.google.com/uc?id=1DpYd27NlHl8YOxN1flccZfyZemfB1ps9">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Special title treatment</h4>
+                                            <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                                            <a class="all-buttons btn btn-secondary mb-1 mr-1 d-flex justify-content-center" href="/regRecipe" role="button">Δες αναλυτικά</i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{{!-- End user's feed area --}}
+
+{{> footer}}
