@@ -87,22 +87,28 @@ body {
     box-shadow: none;
 }
 
-.logout {
-    text-decoration: none;
-    background-color: #ddd;
-    color: #000000;
-}
 /* User's feed */
-    .feed {
+.feed {
     background: #333;
     color: #ddd;
-    }
-    .feed h1 {
+}
+.feed h1 {
     color: white;
     font-size: 1.2rem;
     text-align: center;
     text-shadow: 0px 2px 0px #000000;
 }  
+
+.card-style {
+    /* background: linear-gradient(rgba(0,0,0,0), rgba(150, 115, 80, 0.5)); */
+    background: linear-gradient(rgba(0,0,0,0), rgba(138, 102, 67, 0.3));
+    /* background: linear-gradient(rgba(0,0,0,0), rgba(235, 199, 165, 0.1)); */
+}
+
+.card {
+    background: linear-gradient( rgba(238, 213, 187, 0.952), rgb(255, 255, 255));
+    border: none;
+}
 /* End user's feed */
 
 /* 2. Homepage - registered user */
@@ -233,8 +239,9 @@ body {
 }
 
 /* Reviews */
-.reviews {
+.reviews, .add-comment {
     background-color: white;
+    border-radius: 5px;
 }
 
 #subtitle {
