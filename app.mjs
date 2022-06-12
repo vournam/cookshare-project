@@ -8,7 +8,7 @@ import { fileURLToPath } from 'url';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-import * as model from '../model/model_pg.mjs';
+import * as model from './model/model_pg/model_pg.mjs';
 
 // Create express server
 const app = express();
@@ -23,10 +23,10 @@ app.use(express.static(path.join(__dirname, "public")));
 // Parse application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: false }));
 
-// //Διαδρομές. Αντί να γράψουμε τις διαδρομές μας εδώ, τις φορτώνουμε από ένα άλλο αρχείο
-// import routes from './routes/cookshare-routes.mjs'
-// //και τώρα χρησιμοποιούμε αυτές τις διαδρομές
-// app.use('/', routes);
+//Διαδρομές. Αντί να γράψουμε τις διαδρομές μας εδώ, τις φορτώνουμε από ένα άλλο αρχείο
+import routes from './routes/cookshare-routes.mjs'
+//και τώρα χρησιμοποιούμε αυτές τις διαδρομές
+app.use('/', routes);
 
 // Προσθήκη του express-session middleware
 app.use(session({

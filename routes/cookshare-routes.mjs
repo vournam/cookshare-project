@@ -33,35 +33,35 @@ router.route('/nonRegHome').get( (req,res) => {
     res.render('nonRegHome');
 } );
 
-// Search - non registered
-router.route('/nonRegSearch').get( (req,res) => {
-    res.render('nonRegSearch');
-} );
+// // Search - non registered
+// router.route('/nonRegSearch').get( (req,res) => {
+//     res.render('nonRegSearch');
+// } );
 
-// Search - registered
-router.route('/regSearch').get( (req,res) => {
-    res.render('regSearch');
-} );
+// // Search - registered
+// router.route('/regSearch').get( (req,res) => {
+//     res.render('regSearch');
+// } );
 
-// About - non registered
-router.route('/nonRegAbout').get( (req,res) => {
-    res.render('nonRegAbout');
-} );
+// // About - non registered
+// router.route('/nonRegAbout').get( (req,res) => {
+//     res.render('nonRegAbout');
+// } );
 
-// About - registered
-router.route('/regAbout').get( (req,res) => {
-    res.render('regAbout');
-} );
+// // About - registered
+// router.route('/regAbout').get( (req,res) => {
+//     res.render('regAbout');
+// } );
 
-// Contact - non registered
-router.route('/nonRegContact').get( (req,res) => {
-    res.render('nonRegContact');
-} );
+// // Contact - non registered
+// router.route('/nonRegContact').get( (req,res) => {
+//     res.render('nonRegContact');
+// } );
 
-// Contact - registered
-router.route('/regContact').get( (req,res) => {
-    res.render('regContact');
-} );
+// // Contact - registered
+// router.route('/regContact').get( (req,res) => {
+//     res.render('regContact');
+// } );
 
 // Sign-in
 router.route('/signIn').get( (req,res) => {

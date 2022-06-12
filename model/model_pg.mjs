@@ -220,4 +220,3 @@ async function findUser(userID=null, userName=null, callback) {
 //   }
 
 export { getMyRecipes, newRecipe, findRecipe, updateRecipe, deleteRecipe, findUser };
-
