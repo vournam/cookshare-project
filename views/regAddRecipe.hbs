@@ -15,55 +15,18 @@
                             <label><i class="fa-solid fa-folder-open"></i> Κατηγορία</label>
                             <select class="form-control form-control-sm" name="category" id="categories">
                                 <option value="" selected disabled hidden>Επιλέξτε κατηγορία...</option>
-                                <option value="breakfast" type="button">Πρωινό</option>
-                                <option value="brunch" type="button">Brunch</option>
-                                <option value="appetizer" type="button">Ορεκτικό</option>
-                                <option value="main" type="button">Κυρίως Γεύμα</option>
-                                <option value="dinner" type="button">Βραδινό</option>
-                                <option value="sweet" type="button">Γλυκά</option>
-                                <option value="savory" type="button">Αλμυρά</option>
-                                <option value="drink" type="button">Ροφήματα</option>
-                                <option value="snack" type="button">Snack</option>
-                                <option value="kids" type="button">Παιδικά</option>
-                                <option value="vegan" type="button">Vegan</option>
-                                <option value="light" type="button">Πιάτα Light</option>
-                                <option value="xmas" type="button">Χριστούγεννα</option>
-                                <option value="easter" type="button">Πάσχα</option>
+                                {{#each data}}
+                                    <option value="breakfast" type="button">{{this.category_name}}</option>
+                                {{/each}}
                             </select>
                         </div>
                          <div class="col-md-4">
                             <label><i class="fa-solid fa-bowl-rice"></i> Βασικό υλικό</label>
                             <select class="form-control form-control-sm" name="ingredient">
                                 <option value="" selected disabled hidden>Επιλέξτε βασικό υλικό...</option>
-                                <option value="pork" type="button">Χοιρινό</option>
-                                <option value="chicken" type="button">Κοτόπουλο</option>
-                                <option value="calf" type="button">Μοσχάρι</option>
-                                <option value="lamb" type="button">Αρνί</option>
-                                <option value="turkey" type="button">Γαλοπούλα</option>
-                                <option value="sweet" type="button">Κατσίκι</option>
-                                <option value="cheese" type="button">Τυρί</option>
-                                <option value="rice" type="button">Ρύζι</option>
-                                <option value="pasta" type="button">Ζυμαρικά</option>
-                                <option value="legumes" type="button">Όσπρια</option>
-                                <option value="fish" type="button">Ψάρι</option>
-                                <option value="potato" type="button">Πατάτα</option>
-                                <option value="egg" type="button">Αυγό</option>
-                                <option value="milk" type="button">Γάλα</option>
-                                <option value="butter" type="button">Βούτυρο</option>
-                                <option value="oil" type="button">Λάδι</option>
-                                <option value="tomato" type="button">Ντομάτα</option>
-                                <option value="carrot" type="button">Καρότο</option>
-                                <option value="eggplant" type="button">Μελιτζάνα</option>
-                                <option value="zucchini" type="button">Κολοκύθι</option>
-                                <option value="banana" type="button">Μπανάνα</option>
-                                <option value="apple" type="button">Μήλο</option>
-                                <option value="orange" type="button">Πορτοκάλι</option>
-                                <option value="strawberry" type="button">Φράουλα</option>
-                                <option value="honey" type="button">Μέλι</option>
-                                <option value="tahini" type="button">Ταχίνι</option>
-                                <option value="cocoa" type="button">Κακάο</option>
-                                <option value="nuts" type="button">Ξηροί καρποί</option>
-                                <option value="oats" type="button">Βρώμη</option>
+                                {{#each data}}
+                                    <option value="pork" type="button">{{this.ingredient_name}}</option>
+                                {{/each}}
                             </select>
                         </div>
                     </div>
@@ -76,9 +39,9 @@
                             <label><i class="fa fa-chart-simple mb-2"></i> Επίπεδο δυσκολίας</label>
                             <select class="form-control form-control-sm" name="level">
                                 <option value="" selected disabled hidden>Επιλέξτε επίπεδο δυσκολίας...</option>
-                                <option value="easy" type="button">Εύκολο</option>
-                                <option value="medium" type="button">Μέτριο</option>
-                                <option value="hard" type="button">Δύσκολο</option>
+                                {{#each data}}
+                                    <option value="easy" type="button">{{this.level}}</option>
+                                {{/each}}
                             </select>
                         </div>
                           <div class="col-md-4">
@@ -106,7 +69,7 @@
             </div>
         </div>
     </div>
-    <a href="#" class="all-buttons btn btn-lg btn-secondary">Προσθήκη συνταγής</a>
+    <input type="submit" class="all-buttons btn btn-lg btn-secondary" value="Προσθήκη συνταγής"/>
    
 </div>
 

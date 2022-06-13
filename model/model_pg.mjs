@@ -69,7 +69,7 @@ async function newRecipe (recipe, callback) {
 
 async function findRecipe(recipeIngredient, recipeCategory, callback) {
     console.log('findRecipeWithBasicIngredient', recipeIngredient)
-    const sql = `SELECT * FROM "recipe" WHERE "ingredient" = '${recipeIngredient}'`; //Add the category
+    const sql = `SELECT * FROM "recipe" WHERE "ingredient" = '${recipeIngredient}' AND "category" = '${recipeCategory}'`; //Add the category
     try {
         const client = await connect();
         const res = await client.query(sql)
@@ -91,7 +91,7 @@ async function findRecipe(recipeIngredient, recipeCategory, callback) {
 
 async function updateRecipe (recipe, callback) {
     const sql = `UPDATE "recipe"
-        SET "title" = '${recipe.title}', img = '${recipe.img}', ingredient = '${recipe.ingredient}', description = '${recipe.description}', time = '${recipe.time}', portions = '${recipe.portions}', level = '${recipe.level}'
+        SET "title" = '${recipe.title}', img = '${recipe.img}', ingredient = '${recipe.ingredient}', category = '${recipe.category}', description = '${recipe.description}', time = '${recipe.time}', portions = '${recipe.portions}', level = '${recipe.level}'
         WHERE ("recipe_id" = '${recipe.recipe_id}');`;
     try {
         const client = await connect();

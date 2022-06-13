@@ -34,6 +34,7 @@ CREATE TABLE "recipe" (
   "title" TEXT NOT NULL,
   "belongs_to_user_user_id" INTEGER NOT NULL,
   "belongs_to_user_alias" TEXT NOT NULL,
+  "category" TEXT NOT NULL,
   "img" TEXT NOT NULL,
   "ingredient" TEXT NOT NULL,
   "description" TEXT NOT NULL,
@@ -44,27 +45,19 @@ CREATE TABLE "recipe" (
 
 CREATE INDEX "idx_recipe__belongs_to_user_user_id_belongs_to_user_alias" ON "recipe" ("belongs_to_user_user_id", "belongs_to_user_alias");
 
+CREATE INDEX "idx_recipe__category" ON "recipe" ("category");
+
 CREATE INDEX "idx_recipe__ingredient" ON "recipe" ("ingredient");
 
 CREATE INDEX "idx_recipe__level" ON "recipe" ("level");
 
 ALTER TABLE "recipe" ADD CONSTRAINT "fk_recipe__belongs_to_user_user_id__belongs_to_user_alias" FOREIGN KEY ("belongs_to_user_user_id", "belongs_to_user_alias") REFERENCES "user" ("user_id", "alias") ON DELETE CASCADE;
 
+ALTER TABLE "recipe" ADD CONSTRAINT "fk_recipe__category" FOREIGN KEY ("category") REFERENCES "category" ("category_name") ON DELETE CASCADE;
+
 ALTER TABLE "recipe" ADD CONSTRAINT "fk_recipe__ingredient" FOREIGN KEY ("ingredient") REFERENCES "ingredient" ("ingredient_name") ON DELETE CASCADE;
 
 ALTER TABLE "recipe" ADD CONSTRAINT "fk_recipe__level" FOREIGN KEY ("level") REFERENCES "level" ("level") ON DELETE CASCADE;
-
-CREATE TABLE "category_recipe" (
-  "category" TEXT NOT NULL,
-  "recipe" INTEGER NOT NULL,
-  PRIMARY KEY ("category", "recipe")
-);
-
-CREATE INDEX "idx_category_recipe" ON "category_recipe" ("recipe");
-
-ALTER TABLE "category_recipe" ADD CONSTRAINT "fk_category_recipe__category" FOREIGN KEY ("category") REFERENCES "category" ("category_name");
-
-ALTER TABLE "category_recipe" ADD CONSTRAINT "fk_category_recipe__recipe" FOREIGN KEY ("recipe") REFERENCES "recipe" ("recipe_id");
 
 CREATE TABLE "comment" (
   "comment_id" SERIAL PRIMARY KEY,
