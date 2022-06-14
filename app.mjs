@@ -45,8 +45,7 @@ next();
 // GET /nonRegHome with /
 app.get("/", (req, res) => {
     console.log("GET / session=", req.session);
-    const userID = 0 ;
-    model.getMyRecipes(userID, (err, rows) => {
+    model.getMyRecipes(null, (err, rows) => {
       if (err) {
         return console.error(err.message);
       }
@@ -121,6 +120,21 @@ app.get("/regAllRecipes", (req, res) => {
     });
 });
 
+// POST /nonRegSearch
+app.post("/nonRegSearch", (req, res) => {
+    console.log("GET /nonRegSearch session=", req.session);
+    const ingredient = req.body.ingredient;
+    const category = req.body.category;
+    model.findRecipe(ingredient, category, (err, row) => {
+    if (err) {
+        res.send(err);
+    } else {
+        console.log('post /nonRegSearch recipe to search', row);
+        res.render("nonRegSearch", { data: row });
+    }
+    });
+});
+
 // // GET /edit/:recipe_id
 // app.get("/edit/:recipe_id", (req, res) => {
 //     console.log("GET /edit/:id session=", req.session);
@@ -171,16 +185,6 @@ app.get("/regAllRecipes", (req, res) => {
 const router = express.Router();
 //load the router 'routes' on '/'
 app.use(router); 
-
-// Search - non registered
-router.route('/nonRegSearch').get( (req,res) => {
-    res.render('nonRegSearch');
-} );
-
-// Search - registered
-router.route('/regSearch').get( (req,res) => {
-    res.render('regSearch');
-} );
 
 // Sign-in
 router.route('/signIn').get( (req,res) => {

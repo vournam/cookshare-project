@@ -69,13 +69,15 @@ async function newRecipe (recipe, callback) {
 // Return the categories
 async function recipeInfo (recipe, callback) {
     const sql1 = `SELECT * FROM "category"`;
-    // const sql2 = `SELECT * FROM "ingredient"`;
-    // const sql3 = `SELECT * FROM "level"`;
+    const sql2 = `SELECT * FROM "ingredient"`;
+    const sql3 = `SELECT * FROM "level"`;
     try {
         const client = await connect();
-        const res = await client.query(sql)
+        const res1 = await client.query(sql)
+        const res2 = await client.query(sql)
+        const res3 = await client.query(sql)
         await client.release()
-        callback(null, res.rows) // επιστρέφει array
+        callback(null, [res1.rows, res2.rows, res3.rows]) // επιστρέφει array
     } 
     catch (err) {
         callback(err, null);
@@ -83,8 +85,8 @@ async function recipeInfo (recipe, callback) {
 }
 
 async function findRecipe(recipeIngredient, recipeCategory, callback) {
-    console.log('findRecipeWithBasicIngredient', recipeIngredient)
-    const sql = `SELECT * FROM "recipe" WHERE "ingredient" = '${recipeIngredient}' AND "category" = '${recipeCategory}'`; //Add the category
+    console.log('findRecipe with:', recipeIngredient, recipeCategory)
+    const sql = `SELECT * FROM "recipe" WHERE "ingredient" = '${recipeIngredient}' AND "category" = '${recipeCategory}'`;
     try {
         const client = await connect();
         const res = await client.query(sql)

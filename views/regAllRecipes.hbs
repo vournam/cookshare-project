@@ -2,9 +2,9 @@
 
 <div class="container px-5 py-5">
     <div class="row">
-        <h1 style="font-size:30px;"><i class="fa-solid fa-magnifying-glass"></i> Οι συνταγές μου</h1>
+        <h1 style="font-size:30px;"><i class="fa-solid fa-magnifying-glass"></i> My recipes</h1>
         <hr>
-         {{#each data}}
+        {{#each data}}
             <div class="col-md-3 mb-3">
                 <div class="card">
                     <img class="img-fluid" alt="" src={{this.img}}>
@@ -15,7 +15,7 @@
                             <div class="col"><i class="fa fa-users"> {{this.portions}}</i></div>
                             <div class="col"><i class="fa fa-chart-simple"> {{this.level}}</i></div>
                         </div>
-                        <a class="all-buttons btn btn-secondary mb-1 mr-1 d-flex justify-content-center" href="/nonRegRecipe" role="button">Δες αναλυτικά</i></a>
+                        <a class="all-buttons btn btn-secondary mb-1 mr-1 d-flex justify-content-center" href="/nonRegRecipe" role="button">See in detail</i></a>
                     </div>
                 </div>
             </div>
