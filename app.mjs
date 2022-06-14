@@ -45,7 +45,8 @@ next();
 // GET /nonRegHome with /
 app.get("/", (req, res) => {
     console.log("GET / session=", req.session);
-    model.getMyRecipes(null, (err, rows) => {
+    const userID = 0 ;
+    model.getMyRecipes(userID, (err, rows) => {
       if (err) {
         return console.error(err.message);
       }
@@ -122,7 +123,8 @@ app.get("/regAllRecipes", (req, res) => {
 
 // POST /nonRegSearch
 app.post("/nonRegSearch", (req, res) => {
-    console.log("GET /nonRegSearch session=", req.session);
+    console.log("POST /nonRegSearch session=", req.session);
+    console.log("POST /nonRegSearch session=", req.body.ingredient, req.body.category);
     const ingredient = req.body.ingredient;
     const category = req.body.category;
     model.findRecipe(ingredient, category, (err, row) => {

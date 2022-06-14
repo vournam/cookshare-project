@@ -60,7 +60,7 @@ body {
     border-bottom-right-radius: 10px;
 }
 
-.search a {
+.search input {
     width: 100%;
     padding: 12px 40px 12px 40px;
     display: block;
@@ -73,7 +73,7 @@ body {
     background-color: rgb(175, 170, 170);
 }
 
-.search a:hover {
+.search input:hover {
     color:black;
 }
 /* End search area*/
