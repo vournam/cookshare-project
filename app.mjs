@@ -42,29 +42,41 @@ res.redirect('/');
 next();
 } };
 
-// GET /nonRegAbout
-app.get("/nonRegAbout", (req, res) => {
-    console.log("GET /nonRegAbout session=", req.session);
-    res.render("nonRegAbout");
-  });
+// GET /nonRegHome with /
+app.get("/", (req, res) => {
+    console.log("GET / session=", req.session);
+    model.getAllRecipes( null, (err, rows) => {
+      if (err) {
+        return console.error(err.message);
+      }
+      console.log("nonRegHome feed...", rows)
+      res.render("nonRegHome", { data: rows });
+    });
+});
 
-// GET /nonRegContact
-app.get("/nonRegContact", (req, res) => {
-    console.log("GET /nonRegContact session=", req.session);
-    res.render("nonRegContact");
-  });
+// GET /nonRegHome with /nonRegHome
+app.get("/nonRegHome", (req, res) => {
+    console.log("GET /nonRegHome session=", req.session);
+    model.getAllRecipes( null, (err, rows) => {
+      if (err) {
+        return console.error(err.message);
+      }
+      console.log("nonRegHome feed...", rows)
+      res.render("nonRegHome", { data: rows });
+    });
+});
 
-  // GET /regAbout
-app.get("/regAbout", (req, res) => {
-    console.log("GET /regAbout session=", req.session);
-    res.render("regAbout");
-  });
-
-// GET /regContact
-app.get("/regContact", (req, res) => {
-    console.log("GET /regContact session=", req.session);
-    res.render("regContact");
-  });
+// GET /regHome
+app.get("/regHome", (req, res) => {
+    console.log("GET /regHome session=", req.session);
+    model.getAllRecipes( null, (err, rows) => {
+      if (err) {
+        return console.error(err.message);
+      }
+      console.log("regHome feed...", rows)
+      res.render("regHome", { data: rows });
+    });
+});
 
 // GET /AddRecipe
 app.get("/regAddRecipe", (req, res) => {
@@ -92,7 +104,6 @@ model.newRecipe(newRecipe,
     }); 
 });
 
-
 // GET /regAllRecipes
 app.get("/regAllRecipes", (req, res) => {
     console.log("GET /regAllRecipes session=", req.session);
@@ -105,8 +116,7 @@ app.get("/regAllRecipes", (req, res) => {
       console.log("recipes to show...", rows)
       res.render("regAllRecipes", { data: rows });
     });
-  });
-
+});
 
 // GET /edit/:recipe_id
 app.get("/edit/:recipe_id", (req, res) => {
@@ -123,10 +133,10 @@ app.get("/edit/:recipe_id", (req, res) => {
         }
       });
     }
-  });
+});
   
-  // POST /edit/:recipe_id
-  app.post("/regRecipeEdit/:id", (req, res) => {
+// POST /edit/:recipe_id
+app.post("/regRecipeEdit/:id", (req, res) => {
     console.log("POST /regRecipeEdit/:id session=", req.session);
     const id = req.params.id;
     // const book = [req.body.title, req.body.author, req.body.comment, id];
@@ -140,10 +150,10 @@ app.get("/edit/:recipe_id", (req, res) => {
         res.redirect("/regRecipeEdit/:id");
       }  
     });
-  });
+});
   
-  // POST /delete/:recipe_id
-  app.post("/delete/:id", (req, res) => {
+// POST /delete/:recipe_id
+app.post("/delete/:id", (req, res) => {
     console.log("GET /delete/:id=", "session=", req.session);
     const id = req.params.id;
     model.deleteBook(id, (err, res) => {
@@ -152,27 +162,12 @@ app.get("/edit/:recipe_id", (req, res) => {
       }
     })
     res.redirect("/regAllRecipes");
-  });
+});
 
 // Router
 const router = express.Router();
 //load the router 'routes' on '/'
 app.use(router); 
-
-// Homepage - non registered with /
-router.route('/').get( (req,res) => {
-    res.render('nonRegHome');
-} );
-
-// Homepage - non registered
-router.route('/nonRegHome').get( (req,res) => {
-    res.render('nonRegHome');
-} );
-
-// Homepage - registered
-router.route('/regHome').get( (req,res) => {
-    res.render('regHome');
-} );
 
 // Search - non registered
 router.route('/nonRegSearch').get( (req,res) => {
@@ -213,6 +208,30 @@ router.route('/regMyRecipe').get( (req,res) => {
 router.route('/regSaved').get( (req,res) => {
     res.render('regSaved');
 } );
+
+// GET /nonRegAbout
+app.get("/nonRegAbout", (req, res) => {
+    console.log("GET /nonRegAbout session=", req.session);
+    res.render("nonRegAbout");
+  });
+
+// GET /nonRegContact
+app.get("/nonRegContact", (req, res) => {
+    console.log("GET /nonRegContact session=", req.session);
+    res.render("nonRegContact");
+  });
+
+  // GET /regAbout
+app.get("/regAbout", (req, res) => {
+    console.log("GET /regAbout session=", req.session);
+    res.render("regAbout");
+  });
+
+// GET /regContact
+app.get("/regContact", (req, res) => {
+    console.log("GET /regContact session=", req.session);
+    res.render("regContact");
+  });
 
 // Port
 const PORT = process.env.PORT || 3003

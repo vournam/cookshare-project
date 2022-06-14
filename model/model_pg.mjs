@@ -24,7 +24,7 @@ async function connect() {
 }
 
 async function getMyRecipes(userID, callback) {
-    // ανάκτηση όλων των βιβλίων του χρήστη από τη βάση δεδομένων
+    // ανάκτηση όλων των συνταγών που έχει αναρτήσει ο χρήστης από τη βάση δεδομένων
     const sql = `SELECT * FROM "recipe" WHERE "belongs_to_user_user_id" = '${userID}' ORDER BY "title";`;
     try {
         const client = await connect();
@@ -37,13 +37,19 @@ async function getMyRecipes(userID, callback) {
     }
 }
 
-//// testing
-// getMyBooks(2,  (err, rows) => {
-//     if (err) {
-//       return console.error(err.message);
-//     }
-//     console.log('.....-->', rows);
-//   });
+async function getAllRecipes(callback) {
+    // ανάκτηση όλων των συνταγών από όλους τους χρήστες
+    const sql = `SELECT * FROM "recipe" ORDER BY "title";`;
+    try {
+        const client = await connect();
+        const res = await client.query(sql)
+        await client.release()
+        callback(null, res.rows) // επιστρέφει array
+    }
+    catch (err) {
+        callback(err, null);
+    }
+}
 
 async function newRecipe (recipe, callback) {
     console.log('to insert...', recipe)
@@ -59,13 +65,6 @@ async function newRecipe (recipe, callback) {
         callback(err, null);
     }
 }
-
-///// testing
-// newBook( {"title": "the best book", "author": "me who else", "comment":"", "user": 2}, (err, rows) => {
-//     if (err) {
-//       return console.error(err.message);
-//     } else console.log(rows)
-//   });
 
 // Return the categories
 async function recipeInfo (callback) {
@@ -97,14 +96,6 @@ async function findRecipe(recipeIngredient, recipeCategory, callback) {
         }
     }
 
-// // testing
-// findBook(7, (err, data) => {
-//     if (err) {
-//         return console.log(err)
-//     }
-//     else console.log(data)
-// });
-
 async function updateRecipe (recipe, callback) {
     const sql = `UPDATE "recipe"
         SET "title" = '${recipe.title}', img = '${recipe.img}', ingredient = '${recipe.ingredient}', category = '${recipe.category}', description = '${recipe.description}', time = '${recipe.time}', portions = '${recipe.portions}', level = '${recipe.level}'
@@ -122,14 +113,6 @@ async function updateRecipe (recipe, callback) {
         }
     }
 
-/// testing
-// updateBook({"bookID":8,"title":"Another good book","author":"someone else", "comment":""}, (err, data) => {
-//     if (err) {
-//         console.log(err)
-//     }
-//     console.log(data)
-// })
-
 async function deleteRecipe (recipe, callback) {
     const sql = `DELETE FROM "recipe"
         WHERE  "recipe_id" = '${recipe.recipe_id}';`;
@@ -145,14 +128,6 @@ async function deleteRecipe (recipe, callback) {
         callback(err, null);
         }
     }
-
-/// testing
-// deleteBook(7, (err, data) => {
-//     if (err)
-//         console.log(err);
-//     else
-//         console.log(data);
-// })
 
 // async function insertUser (userName, callback) {
 //     // εισαγωγή νέου χρήστη, και επιστροφή στο callback της νέας εγγραφής

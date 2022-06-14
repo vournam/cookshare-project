@@ -82,119 +82,70 @@
     </div> 
     {{!-- End search area --}}
 
-    {{!-- User's feed area --}}
-    <section class=" feed pt-5 pb-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-6">
-                    <h1>Εδώ βρίσκονται οι πιο πρόσφατες συνταγές των μελών μας.</h1>
-                </div>
-                <div class="col-6 text-end">
-                    <a class="all-buttons btn btn-secondary mb-4 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-                        <i class="fa fa-arrow-left"></i>
-                    </a>
-                    <a class="all-buttons btn btn-secondary mb-4 " href="#carouselExampleIndicators2" role="button" data-slide="next">
-                        <i class="fa fa-arrow-right"></i>
-                    </a>
-                </div>
-                <div class="col-12">
-                    <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-                        <div class="carousel-inner">
-                            <div class="carousel-item active">
-                                <div class="row">
+{{!-- User's feed area --}}
+<section class=" feed pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-6">
+                <h1>Εδώ βρίσκονται οι πιο πρόσφατες συνταγές των μελών μας.</h1>
+            </div>
+            <div class="col-6 text-end">
+                <a class="all-buttons btn btn-secondary mb-4 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+                    <i class="fa fa-arrow-left"></i>
+                </a>
+                <a class="all-buttons btn btn-secondary mb-4 " href="#carouselExampleIndicators2" role="button" data-slide="next">
+                    <i class="fa fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="col-12">
+                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <div class="row">
+                                {{#each data}}
                                     <div class="col-md-3 mb-3">
                                         <div class="card card-style">
-                                            <img class="img-fluid" alt="" src="https://drive.google.com/uc?id=1DpYd27NlHl8YOxN1flccZfyZemfB1ps9">
+                                            <img class="img-fluid" src={{this.img}} alt="" >
                                             <div class="card-body">
-                                                <h4 class="card-title">Special title treatment</h4>
-                                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                <a class="all-buttons btn btn-secondary mb-1 mr-1 d-flex justify-content-center" href="/nonRegRecipe" role="button">Δες αναλυτικά</i></a>
+                                                <h4 class="card-title">{{this.title}}</h4>
+                                                <div class="row card-text d-flex justify-content-between">
+                                                    <div class="col"> <i class="fa-solid fa-clock"> {{this.time}}</i></div>
+                                                    <div class="col"><i class="fa fa-users"> {{this.portions}}</i></div>
+                                                    <div class="col"><i class="fa fa-chart-simple"> {{this.level}}</i></div>
+                                                </div>
+                                                <a class="all-buttons btn btn-secondary mb-1 mr-1 d-flex justify-content-center" href="/regRecipe" role="button">Δες αναλυτικά</i></a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 mb-3">
-                                        <div class="card card-style">
-                                            <img class="img-fluid" alt="" src="https://drive.google.com/uc?id=1rVkVa7CCrvellYtBMIYNuFsqWz_jvLIV">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Special title treatment</h4>
-                                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                <a class="all-buttons btn btn-secondary mb-1 mr-1 d-flex justify-content-center" href="/nonRegRecipe" role="button">Δες αναλυτικά</i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <div class="card card-style">
-                                            <img class="img-fluid" alt="" src="https://drive.google.com/uc?id=16YSuPn7dDOZmstyGaTvKSPkrYeGoOMKK">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Special title treatment</h4>
-                                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                <a class="all-buttons btn btn-secondary mb-1 mr-1 d-flex justify-content-center" href="/nonRegRecipe" role="button">Δες αναλυτικά</i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <div class="card card-style">
-                                            <img class="img-fluid" alt="" src="https://drive.google.com/uc?id=12rI7LMOdX1fGWX1clxVOyzp4LD0U6_1a">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Special title treatment</h4>
-                                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                <a class="all-buttons btn btn-secondary mb-1 mr-1 d-flex justify-content-center" href="/nonRegRecipe" role="button">Δες αναλυτικά</i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                {{/each}}
                             </div>
-                            <div class="carousel-item">
-                                <div class="row">
+                        </div>
+                        <div class="carousel-item">
+                            <div class="row">
+                                {{#each data}}
                                     <div class="col-md-3 mb-3">
                                         <div class="card card-style">
-                                            <img class="img-fluid" alt="" src="https://drive.google.com/uc?id=1rVkVa7CCrvellYtBMIYNuFsqWz_jvLIV">
+                                            <img class="img-fluid" src={{this.img}} alt="">
                                             <div class="card-body">
-                                                <h4 class="card-title">Special title treatment</h4>
-                                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                <a class="all-buttons btn btn-secondary mb-1 mr-1 d-flex justify-content-center" href="/nonRegRecipe" role="button">Δες αναλυτικά</i></a>
-                                            </div>
-    
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <div class="card card-style">
-                                            <img class="img-fluid" alt="" src="https://drive.google.com/uc?id=1rVkVa7CCrvellYtBMIYNuFsqWz_jvLIV">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Special title treatment</h4>
-                                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                <a class="all-buttons btn btn-secondary mb-1 mr-1 d-flex justify-content-center" href="/nonRegRecipe" role="button">Δες αναλυτικά</i></a>
+                                                <h4 class="card-title">{{this.title}}</h4>
+                                                <div class="row card-text d-flex justify-content-between">
+                                                    <div class="col"> <i class="fa-solid fa-clock"> {{this.time}}</i></div>
+                                                    <div class="col"><i class="fa fa-users"> {{this.portions}}</i></div>
+                                                    <div class="col"><i class="fa fa-chart-simple"> {{this.level}}</i></div>
+                                                </div>
+                                                <a class="all-buttons btn btn-secondary mb-1 mr-1 d-flex justify-content-center" href="/regRecipe" role="button">Δες αναλυτικά</i></a>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-md-3 mb-3">
-                                        <div class="card card-style">
-                                            <img class="img-fluid" alt="" src="https://drive.google.com/uc?id=12rI7LMOdX1fGWX1clxVOyzp4LD0U6_1a">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Special title treatment</h4>
-                                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                <a class="all-buttons btn btn-secondary mb-1 mr-1 d-flex justify-content-center" href="/nonRegRecipe" role="button">Δες αναλυτικά</i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-3 mb-3">
-                                        <div class="card card-style">
-                                            <img class="img-fluid" alt="" src="https://drive.google.com/uc?id=1rVkVa7CCrvellYtBMIYNuFsqWz_jvLIV">
-                                            <div class="card-body">
-                                                <h4 class="card-title">Special title treatment</h4>
-                                                <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-                                                <a class="all-buttons btn btn-secondary mb-1 mr-1 d-flex justify-content-center" href="/nonRegRecipe" role="button">Δες αναλυτικά</i></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
+                                {{/each}}
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    {{!-- End user's feed area --}}
+    </div>
+</section>
+{{!-- End user's feed area --}}
 
 {{> footer}}
