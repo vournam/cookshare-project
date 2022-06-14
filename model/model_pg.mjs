@@ -56,9 +56,9 @@ async function newRecipe (recipe, callback) {
         callback(null, res.rows) // επιστρέφει array
     } 
     catch (err) {
-            callback(err, null);
-        }
+        callback(err, null);
     }
+}
 
 ///// testing
 // newBook( {"title": "the best book", "author": "me who else", "comment":"", "user": 2}, (err, rows) => {
@@ -66,6 +66,24 @@ async function newRecipe (recipe, callback) {
 //       return console.error(err.message);
 //     } else console.log(rows)
 //   });
+
+// Return the categories
+async function RecipeInfo (callback) {
+    const sql1 = `SELECT * FROM "category"`;
+    const sql2 = `SELECT * FROM "ingredient"`;
+    const sql3 = `SELECT * FROM "level"`;
+    try {
+        const client = await connect();
+        const res1 = await client.query(sql1)
+        const res2 = await client.query(sql2)
+        const res3 = await client.query(sql3)
+        await client.release()
+        callback(null, res1.rows, res2.rows, res3.rows) // επιστρέφει array
+    } 
+    catch (err) {
+        callback(err, null);
+    }
+}
 
 async function findRecipe(recipeIngredient, recipeCategory, callback) {
     console.log('findRecipeWithBasicIngredient', recipeIngredient)

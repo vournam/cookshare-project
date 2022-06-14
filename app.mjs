@@ -69,7 +69,12 @@ app.get("/regContact", (req, res) => {
 // GET /AddRecipe
 app.get("/regAddRecipe", (req, res) => {
     console.log("GET /regAddRecipe, session=", req.session)
-    res.render("regAddRecipe", { data: {} });
+    model.RecipeInfo( (err, category, ingredient, level) => {
+        if (err) {
+          return console.error(err.message);
+        }
+        res.render("regAddRecipe", { category: category, ingredient: ingredient, level: level });
+      });
 });
 
 // POST /AddRecipe
@@ -86,6 +91,22 @@ model.newRecipe(newRecipe,
     res.redirect("/regAllRecipes");
     }); 
 });
+
+
+// GET /regAllRecipes
+app.get("/regAllRecipes", redirectHome, (req, res) => {
+    console.log("GET /regAllRecipes session=", req.session);
+    const userID = req.session.user_id;
+    const userName = req.session.alias;
+    model.getMyRecipes(userID, (err, rows) => {
+      if (err) {
+        return console.error(err.message);
+      }
+      console.log("recipes to show...", rows)
+      res.render("regAllRecipes", { data: rows });
+    });
+  });
+
 
 // GET /edit/:recipe_id
 app.get("/edit/:recipe_id", (req, res) => {
@@ -133,7 +154,6 @@ app.get("/edit/:recipe_id", (req, res) => {
     res.redirect("/regAllRecipes");
   });
 
-
 // Router
 const router = express.Router();
 //load the router 'routes' on '/'
@@ -177,11 +197,6 @@ router.route('/nonRegRecipe').get( (req,res) => {
 // Recipe - registered
 router.route('/regRecipe').get( (req,res) => {
     res.render('regRecipe');
-} );
-
-// AllRecipes - registered
-router.route('/regAllRecipes').get( (req,res) => {
-    res.render('regAllRecipes');
 } );
 
 // Profile - registered

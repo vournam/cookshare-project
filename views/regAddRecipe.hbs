@@ -15,7 +15,7 @@
                             <label><i class="fa-solid fa-folder-open"></i> Κατηγορία</label>
                             <select class="form-control form-control-sm" name="category" id="categories">
                                 <option value="" selected disabled hidden>Επιλέξτε κατηγορία...</option>
-                                {{#each data}}
+                                {{#each category}}
                                     <option value="breakfast" type="button">{{this.category_name}}</option>
                                 {{/each}}
                             </select>
@@ -24,7 +24,7 @@
                             <label><i class="fa-solid fa-bowl-rice"></i> Βασικό υλικό</label>
                             <select class="form-control form-control-sm" name="ingredient">
                                 <option value="" selected disabled hidden>Επιλέξτε βασικό υλικό...</option>
-                                {{#each data}}
+                                {{#each ingredient}}
                                     <option value="pork" type="button">{{this.ingredient_name}}</option>
                                 {{/each}}
                             </select>
@@ -39,7 +39,7 @@
                             <label><i class="fa fa-chart-simple mb-2"></i> Επίπεδο δυσκολίας</label>
                             <select class="form-control form-control-sm" name="level">
                                 <option value="" selected disabled hidden>Επιλέξτε επίπεδο δυσκολίας...</option>
-                                {{#each data}}
+                                {{#each level}}
                                     <option value="easy" type="button">{{this.level}}</option>
                                 {{/each}}
                             </select>
