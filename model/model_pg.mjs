@@ -37,7 +37,7 @@ async function getMyRecipes(userID, callback) {
     }
 }
 
-async function getAllRecipes( callback) {
+async function getAllRecipes(userID, callback) {
     // ανάκτηση όλων των συνταγών από όλους τους χρήστες
     const sql = `SELECT * FROM "recipe" ORDER BY "title";`;
     try {
