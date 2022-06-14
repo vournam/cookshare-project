@@ -45,7 +45,7 @@ next();
 // GET /nonRegHome with /
 app.get("/", (req, res) => {
     console.log("GET / session=", req.session);
-    const userID = null ;
+    const userID = 0 ;
     model.getMyRecipes(userID, (err, rows) => {
       if (err) {
         return console.error(err.message);
@@ -58,7 +58,7 @@ app.get("/", (req, res) => {
 // GET /nonRegHome with /nonRegHome
 app.get("/nonRegHome", (req, res) => {
     console.log("GET /nonRegHome session=", req.session);
-    const userID = null ;
+    const userID = 0 ;
     model.getMyRecipes(userID, (err, rows) => {
       if (err) {
         return console.error(err.message);
@@ -71,7 +71,7 @@ app.get("/nonRegHome", (req, res) => {
 // GET /regHome
 app.get("/regHome", (req, res) => {
     console.log("GET /regHome session=", req.session);
-    const userID = null || req.session.user_id;
+    const userID = 0 || req.session.user_id;
     model.getMyRecipes(userID, (err, rows) => {
       if (err) {
         return console.error(err.message);
