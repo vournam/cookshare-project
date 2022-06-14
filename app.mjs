@@ -45,11 +45,12 @@ next();
 // GET /nonRegHome with /
 app.get("/", (req, res) => {
     console.log("GET / session=", req.session);
-    model.getAllRecipes(null, (err, rows) => {
+    const userID = null ;
+    model.getMyRecipes(userID, (err, rows) => {
       if (err) {
         return console.error(err.message);
       }
-      console.log("nonRegHome feed...", rows)
+      console.log("nonReg feed...", rows)
       res.render("nonRegHome", { data: rows });
     });
 });
@@ -57,11 +58,12 @@ app.get("/", (req, res) => {
 // GET /nonRegHome with /nonRegHome
 app.get("/nonRegHome", (req, res) => {
     console.log("GET /nonRegHome session=", req.session);
-    model.getAllRecipes( null, (err, rows) => {
+    const userID = null ;
+    model.getMyRecipes(userID, (err, rows) => {
       if (err) {
         return console.error(err.message);
       }
-      console.log("nonRegHome feed...", rows)
+      console.log("nonReg feed...", rows)
       res.render("nonRegHome", { data: rows });
     });
 });
@@ -69,11 +71,12 @@ app.get("/nonRegHome", (req, res) => {
 // GET /regHome
 app.get("/regHome", (req, res) => {
     console.log("GET /regHome session=", req.session);
-    model.getAllRecipes( null, (err, rows) => {
+    const userID = null || req.session.user_id;
+    model.getMyRecipes(userID, (err, rows) => {
       if (err) {
         return console.error(err.message);
       }
-      console.log("regHome feed...", rows)
+      console.log("reg feed...", rows)
       res.render("regHome", { data: rows });
     });
 });

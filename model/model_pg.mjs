@@ -37,20 +37,6 @@ async function getMyRecipes(userID, callback) {
     }
 }
 
-async function getAllRecipes(userID, callback) {
-    // ανάκτηση όλων των συνταγών από όλους τους χρήστες
-    const sql = `SELECT * FROM "recipe" ORDER BY "title";`;
-    try {
-        const client = await connect();
-        const res = await client.query(sql)
-        await client.release()
-        callback(null, res.rows) // επιστρέφει array
-    }
-    catch (err) {
-        callback(err, null);
-    }
-}
-
 async function newRecipe (recipe, callback) {
     console.log('to insert...', recipe)
     const sql = `INSERT INTO "recipe" ("title", "img", "ingredient", "description", "time", "portions", "level") 
