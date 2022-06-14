@@ -26,7 +26,7 @@
             <div class="bg-light text-center px-3">
                 <ul class="list-inline d-flex justify-content-between py-2">
                     <li>
-                        <h5 class="font-weight-bold">4</h5><small class="text-muted"> <i class="fa fa-picture-o mr-1"></i>Οι συνταγές μου</small>
+                        <h5 class="font-weight-bold">({{data.length}}</h5><small class="text-muted"> <i class="fa fa-picture-o mr-1"></i>Οι συνταγές μου</small>
                     </li>
                     <li>
                         <h5 class="font-weight-bold">0</h5><small class="text-muted"> <i class="fa fa-user-circle-o mr-1"></i>Αποθηκευμένα</small>
@@ -42,10 +42,9 @@
                     <h5 class="mb-0">Οι πρόσφατες συνταγές μου</h5><a href="/regAllRecipes" class=" all-buttons btn btn-secondary btn-sm mt-2">Δες αναλυτικά</a>
                 </div>
                 <div class="row">
-                    <div class="col-lg-6 mb-2 pr-lg-1"><a href="/regMyRecipe"><img src="https://drive.google.com/uc?id=1DpYd27NlHl8YOxN1flccZfyZemfB1ps9" alt="" class="img-fluid rounded shadow-sm"></a></div>
-                    <div class="col-lg-6 mb-2 pl-lg-1"><a href="/regMyRecipe"><img src="https://drive.google.com/uc?id=1rVkVa7CCrvellYtBMIYNuFsqWz_jvLIV" alt="" class="img-fluid rounded shadow-sm"></a></div>
-                    <div class="col-lg-6 pr-lg-1 mb-2"><a href="/regMyRecipe"><img src="https://drive.google.com/uc?id=16YSuPn7dDOZmstyGaTvKSPkrYeGoOMKK" alt="" class="img-fluid rounded shadow-sm"></a></div>
-                    <div class="col-lg-6 pl-lg-1"><a href="/regMyRecipe"><img src="https://drive.google.com/uc?id=12rI7LMOdX1fGWX1clxVOyzp4LD0U6_1a" alt="" class="img-fluid rounded shadow-sm"></a></div>
+                    {{#each data}}
+                        <div class="col-lg-6 mb-2 pr-lg-1"><a href="/regMyRecipe"><img src={{this.img}}  alt="" class="img-fluid rounded shadow-sm"></a></div>
+                    {{/each}}
                 </div>
                 <div class="py-4">
                     <div class="d-flex align-items-center justify-content-between mb-3">

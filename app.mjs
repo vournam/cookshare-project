@@ -69,11 +69,11 @@ app.get("/regContact", (req, res) => {
 // GET /AddRecipe
 app.get("/regAddRecipe", (req, res) => {
     console.log("GET /regAddRecipe, session=", req.session)
-    model.RecipeInfo( (err, category, ingredient, level) => {
+    model.recipeInfo( (err, category) => {
         if (err) {
           return console.error(err.message);
         }
-        res.render("regAddRecipe", { category: category, ingredient: ingredient, level: level });
+        res.render("regAddRecipe", { category: category });
       });
 });
 
@@ -94,10 +94,10 @@ model.newRecipe(newRecipe,
 
 
 // GET /regAllRecipes
-app.get("/regAllRecipes", redirectHome, (req, res) => {
+app.get("/regAllRecipes", (req, res) => {
     console.log("GET /regAllRecipes session=", req.session);
-    const userID = req.session.user_id;
-    const userName = req.session.alias;
+    const userID = 1 || req.session.user_id;
+    const userName = 'melCook' || req.session.alias;
     model.getMyRecipes(userID, (err, rows) => {
       if (err) {
         return console.error(err.message);

@@ -68,17 +68,15 @@ async function newRecipe (recipe, callback) {
 //   });
 
 // Return the categories
-async function RecipeInfo (callback) {
+async function recipeInfo (callback) {
     const sql1 = `SELECT * FROM "category"`;
-    const sql2 = `SELECT * FROM "ingredient"`;
-    const sql3 = `SELECT * FROM "level"`;
+    // const sql2 = `SELECT * FROM "ingredient"`;
+    // const sql3 = `SELECT * FROM "level"`;
     try {
         const client = await connect();
-        const res1 = await client.query(sql1)
-        const res2 = await client.query(sql2)
-        const res3 = await client.query(sql3)
+        const res = await client.query(sql)
         await client.release()
-        callback(null, res1.rows, res2.rows, res3.rows) // επιστρέφει array
+        callback(null, res.rows) // επιστρέφει array
     } 
     catch (err) {
         callback(err, null);
