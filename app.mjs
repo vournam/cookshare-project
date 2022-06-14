@@ -45,7 +45,7 @@ next();
 // GET /nonRegHome with /
 app.get("/", (req, res) => {
     console.log("GET / session=", req.session);
-    model.getAllRecipes( null, (err, rows) => {
+    model.getAllRecipes( (err, rows) => {
       if (err) {
         return console.error(err.message);
       }
