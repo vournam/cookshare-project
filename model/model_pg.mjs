@@ -67,7 +67,7 @@ async function newRecipe (recipe, callback) {
 }
 
 // Return the categories
-async function recipeInfo (callback) {
+async function recipeInfo (recipe, callback) {
     const sql1 = `SELECT * FROM "category"`;
     // const sql2 = `SELECT * FROM "ingredient"`;
     // const sql3 = `SELECT * FROM "level"`;

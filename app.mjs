@@ -84,7 +84,7 @@ app.get("/regHome", (req, res) => {
 // GET /AddRecipe
 app.get("/regAddRecipe", (req, res) => {
     console.log("GET /regAddRecipe, session=", req.session)
-    model.recipeInfo( (err, category) => {
+    model.recipeInfo( null, (err, category) => {
         if (err) {
           return console.error(err.message);
         }
@@ -121,51 +121,51 @@ app.get("/regAllRecipes", (req, res) => {
     });
 });
 
-// GET /edit/:recipe_id
-app.get("/edit/:recipe_id", (req, res) => {
-    console.log("GET /edit/:id session=", req.session);
-    const id = req.params.recipe_id;
-    if(id){
-      console.log('edit', id)
-      model.findRecipe(id, (err, row) => {
-        if (err) {
-          res.send(err);
-        } else {
-          console.log('get /edit/id recipe to edit', row[0]);
-          res.render("regEditRecipe", { data: row[0] });
-        }
-      });
-    }
-});
+// // GET /edit/:recipe_id
+// app.get("/edit/:recipe_id", (req, res) => {
+//     console.log("GET /edit/:id session=", req.session);
+//     const id = req.params.recipe_id;
+//     if(id){
+//       console.log('edit', id)
+//       model.findRecipe(id, (err, row) => {
+//         if (err) {
+//           res.send(err);
+//         } else {
+//           console.log('get /edit/id recipe to edit', row[0]);
+//           res.render("regEditRecipe", { data: row[0] });
+//         }
+//       });
+//     }
+// });
   
-// POST /edit/:recipe_id
-app.post("/regRecipeEdit/:id", (req, res) => {
-    console.log("POST /regRecipeEdit/:id session=", req.session);
-    const id = req.params.id;
-    // const book = [req.body.title, req.body.author, req.body.comment, id];
-    const recipe = {"title":req.body.title, "img":req.body.img, "ingredient":req.body.ingredient, "category":req.body.category, "description":req.body.description, "time":req.body.time, "portions":req.body.portions, "level":req.body.level}
-    model.updateRecipe(recipe, (err, data) => {
-      console.log('in POST', err, data)
-      if(err){
-        return console.error(err.message);
-      }
-      else {
-        res.redirect("/regRecipeEdit/:id");
-      }  
-    });
-});
+// // POST /edit/:recipe_id
+// app.post("/regRecipeEdit/:id", (req, res) => {
+//     console.log("POST /regRecipeEdit/:id session=", req.session);
+//     const id = req.params.id;
+//     // const book = [req.body.title, req.body.author, req.body.comment, id];
+//     const recipe = {"title":req.body.title, "img":req.body.img, "ingredient":req.body.ingredient, "category":req.body.category, "description":req.body.description, "time":req.body.time, "portions":req.body.portions, "level":req.body.level}
+//     model.updateRecipe(recipe, (err, data) => {
+//       console.log('in POST', err, data)
+//       if(err){
+//         return console.error(err.message);
+//       }
+//       else {
+//         res.redirect("/regRecipeEdit/:id");
+//       }  
+//     });
+// });
   
-// POST /delete/:recipe_id
-app.post("/delete/:id", (req, res) => {
-    console.log("GET /delete/:id=", "session=", req.session);
-    const id = req.params.id;
-    model.deleteBook(id, (err, res) => {
-      if (err) {
-        return console.error(err.message);
-      }
-    })
-    res.redirect("/regAllRecipes");
-});
+// // POST /delete/:recipe_id
+// app.post("/delete/:id", (req, res) => {
+//     console.log("GET /delete/:id=", "session=", req.session);
+//     const id = req.params.id;
+//     model.deleteBook(id, (err, res) => {
+//       if (err) {
+//         return console.error(err.message);
+//       }
+//     })
+//     res.redirect("/regAllRecipes");
+// });
 
 // Router
 const router = express.Router();
