@@ -124,7 +124,7 @@ app.get("/regAllRecipes", (req, res) => {
 // POST /nonRegSearch
 app.post("/nonRegSearch", (req, res) => {
     console.log("POST /nonRegSearch session=", req.session);
-    console.log("POST /nonRegSearch session=", req.body.ingredient, req.body.category);
+    console.log("POST /nonRegSearch keys=", req.body.ingredient, req.body.category);
     const ingredient = req.body.ingredient;
     const category = req.body.category;
     model.findRecipe(ingredient, category, (err, row) => {
