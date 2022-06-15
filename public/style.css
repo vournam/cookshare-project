@@ -59,6 +59,7 @@ body {
     background-color: rgb(117, 111, 111);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
+    border: none;
     width: 100%;
     padding: 12px 40px 12px 40px;
     display: block;
@@ -67,13 +68,11 @@ body {
     text-decoration: none;
 }
 
-.search:hover {
-    background-color: rgb(175, 170, 170);
-}
-
 .search input:hover {
+    background-color: rgb(175, 170, 170);
     color:black;
 }
+
 /* End search area*/
 
 .all-buttons:hover {
