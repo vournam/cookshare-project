@@ -24,6 +24,7 @@ body {
     background-color:  rgb(138, 102, 67);
     border-radius: 10px;
     border: 2rem solid rgb(138, 102, 67);
+    width: 40rem;
 }
 
 .basic-ingredient {
@@ -54,13 +55,10 @@ body {
     cursor: pointer;
 }
 
-.search {
+.search input {
     background-color: rgb(117, 111, 111);
     border-top-right-radius: 10px;
     border-bottom-right-radius: 10px;
-}
-
-.search input {
     width: 100%;
     padding: 12px 40px 12px 40px;
     display: block;
