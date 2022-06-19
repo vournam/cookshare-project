@@ -21,21 +21,21 @@
                 </ul>
                 <div class="tab-content" id="pills-tabContent">
                     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                        <form action="/login" method="POST" name="login" class="sign-in-form px-5 py-3">
-                            <input type="email" name="user-email" class="form-control" placeholder="Email" value="" required="required">
-                            <input type="password" name="user-password" class="form-control my-2" placeholder="Password" value="" required="required">
-                            <a class="all-buttons btn btn-secondary btn-block mt-3" href="/login" role="button">Login</a>
+                        <form method="POST" name="login" class="sign-in-form px-5 py-3">
+                            <input type="email" name="email" class="form-control" placeholder="Email" value="" required="required">
+                            <input type="password" name="password" class="form-control my-2" placeholder="Password" value="" required="required">
+                            <button class="all-buttons btn btn-secondary btn-block mt-3">Login</button>
                         </form>
                     </div>
     
                     <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                        <form action="/regHome" method="POST" name="register" class="sign-in-form px-5 py-3">
+                        <form action="register" method="POST" name="register" class="sign-in-form px-5 py-3">
                             <input type="text" name="name" class="form-control" placeholder="Name" value=""  required="required">
                             <input type="text" name="surname" class="form-control my-2" placeholder="Surname" value=""  required="required">
                             <input type="text" name="alias" class="form-control" placeholder="Username" value=""  required="required">
                             <input type="email" name="email" class="form-control my-2" placeholder="Email" value=""  required="required">
-                            <input type="password" name="user-password" class="form-control" placeholder="Password" value=""  required="required">
-                            <a class="all-buttons btn btn-secondary btn-block mt-3" href="/register" role="button">Register</a>
+                            <input type="password" name="password" class="form-control" placeholder="Password" value=""  required="required">
+                            <button class="all-buttons btn btn-secondary btn-block mt-3" href="register">Register</button>
                         </form>
                     </div>  
                 </div>

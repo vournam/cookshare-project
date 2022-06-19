@@ -4,7 +4,7 @@
     <div class="my-2">
         <h4><i class="fa-solid fa-pen-to-square"></i> Add new recipe</h4>
         <div class="py-3">
-            <form action="/regAddRecipe" method="POST">
+            <form method="POST">
                 <div class="form-group mb-2">
                     <div class="row mb-4">
                         <div class="col-md-4">
@@ -33,7 +33,7 @@
                      <div class="row">
                         <div class="col-md-4">
                             <label><i class="fa-solid fa-clock mb-2"></i> Time</label>
-                            <input type="number" class="form-control form-control-sm" name="time" placeholder="Time in minutes" value="">
+                            <input type="number" class="form-control form-control-sm" name="time" placeholder="Time in minutes" value="" min="0">
                         </div>
                         <div class="col-md-4">
                             <label><i class="fa fa-chart-simple mb-2"></i> Difficulty level</label>
@@ -50,26 +50,24 @@
                         </div>
                     </div>
                 </div>
-
+                <div class="mb-4">
+                    <h4 class="pt-2"> Recipe's description</h4>
+                    <div class="py-2">
+                        <div class="mb-2">
+                            <textarea class="form-control" placeholder="Write the recipe's ingredients and directions..." name="description" rows="8"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label><i class="far fa-images mb-2"></i> Image URL</label>
+                                <input type="text" class="form-control form-control-sm" name="img" placeholder="http://www." value="">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="all-buttons btn btn-lg btn-secondary" href="/regAddRecipe">Add recipe</button>
+                </div>
             </form>
         </div>
     </div>
-
-    <div class="mb-4">
-        <h4 class="pt-2"> Recipe's description</h4>
-        <div class="py-2">
-            <div class="mb-2">
-                <textarea class="form-control" placeholder="Write the recipe's ingredients and directions..." name="description" rows="8"></textarea>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <label><i class="far fa-images mb-2"></i> Image URL</label>
-                    <input type="text" class="form-control form-control-sm" name="img" placeholder="http://www." value="">
-                </div>
-            </div>
-        </div>
-    </div>
-    <input type="submit" class="all-buttons btn btn-lg btn-secondary" value="Add recipe"/>
-</div>
 
 {{> footer}}

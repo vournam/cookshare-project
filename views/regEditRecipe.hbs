@@ -2,9 +2,9 @@
 
 <div class="container px-3 py-4">
     <div class="my-2">
-        <h4><i class="fa-solid fa-pen-to-square"></i> Add new recipe</h4>
+        <h4><i class="fa-solid fa-pen-to-square"></i> Edit recipe</h4>
         <div class="py-3">
-            <form action="/regAddRecipe" method="POST">
+            <form action="/regEditRecipe" method="POST">
                 <div class="form-group mb-2">
                     <div class="row mb-4">
                         <div class="col-md-4">
@@ -15,8 +15,9 @@
                             <label><i class="fa-solid fa-folder-open"></i> Category</label>
                             <select class="form-control form-control-sm" name="category" id="categories">
                                 <option value="" selected disabled hidden>Select category...</option>
+                                <option type="button" selected>{{data.category}}</option>
                                 {{#each category}}
-                                    <option value="breakfast" type="button">{{this.category_name}}</option>
+                                    <option type="button">{{this.category_name}}</option>
                                 {{/each}}
                             </select>
                         </div>
@@ -24,8 +25,9 @@
                             <label><i class="fa-solid fa-bowl-rice"></i> Basic ingredient</label>
                             <select class="form-control form-control-sm" name="ingredient">
                                 <option value="" selected disabled hidden>Select basic ingredient...</option>
+                                <option type="button" selected>{{data.ingredient}}</option>
                                 {{#each ingredient}}
-                                    <option value="pork" type="button">{{this.ingredient_name}}</option>
+                                    <option type="button">{{this.ingredient_name}}</option>
                                 {{/each}}
                             </select>
                         </div>
@@ -33,43 +35,43 @@
                      <div class="row">
                         <div class="col-md-4">
                             <label><i class="fa-solid fa-clock mb-2"></i> Time</label>
-                            <input type="number" class="form-control form-control-sm" name="time" placeholder="Time in minutes" value="">
+                            <input type="number" class="form-control form-control-sm" name="time" placeholder={{data.time}} value="">
                         </div>
                         <div class="col-md-4">
                             <label><i class="fa fa-chart-simple mb-2"></i> Difficulty level</label>
                             <select class="form-control form-control-sm" name="level">
                                 <option value="" selected disabled hidden>Select difficulty level...</option>
+                                <option type="button" selected>{{data.level}}</option>
                                 {{#each level}}
-                                    <option value="easy" type="button">{{this.level}}</option>
+                                    <option type="button">{{this.level}}</option>
                                 {{/each}}
                             </select>
                         </div>
                           <div class="col-md-4">
                             <label><i class="fa fa-users mb-2"></i> Portions</label>
-                            <input type="number" min="0" class="form-control form-control-sm" name="portions" placeholder="Portions" value="">
+                            <input type="number" min="0" class="form-control form-control-sm" name="portions" placeholder={{data.portions}} value="">
                         </div>
                     </div>
                 </div>
-
+                <div class="mb-4">
+                    <h4 class="pt-2"> Recipe's description</h4>
+                    <div class="py-2">
+                        <div class="mb-2">
+                            <textarea class="form-control" placeholder={{data.description}} name="description" rows="8"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <label><i class="far fa-images mb-2"></i> Image URL</label>
+                                <input type="text" class="form-control form-control-sm" name="img" placeholder={{data.img}} value="">
+                            </div>
+                        </div>
+                    </div>
+                    <input type="hidden" name="id" value={{data.recipe_id}} />
+                </div>
+                <input type="submit" class="all-buttons btn btn-lg btn-secondary" value="Edit recipe"/>
+                </div>
             </form>
         </div>
     </div>
-
-    <div class="mb-4">
-        <h4 class="pt-2"> Recipe's description</h4>
-        <div class="py-2">
-            <div class="mb-2">
-                <textarea class="form-control" placeholder="Write the recipe's ingredients and directions..." name="description" rows="8"></textarea>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <label><i class="far fa-images mb-2"></i> Image URL</label>
-                    <input type="text" class="form-control form-control-sm" name="img" placeholder="http://www." value="">
-                </div>
-            </div>
-        </div>
-    </div>
-    <input type="submit" class="all-buttons btn btn-lg btn-secondary" value="Edit recipe"/>
-</div>
 
 {{> footer}}

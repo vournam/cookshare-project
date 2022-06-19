@@ -16,7 +16,7 @@
                 </div>
                 {{!-- Search button --}}
                 <div class="d-flex justify-content-center">
-                    <form action="/nonRegSearch" method="post" class="row no-gutters">
+                    <form action="nonRegSearch" method="post" class="row no-gutters">
                         <div class="col-md-4 px-0">
                             <select class="form-control form-control-sm basic-ingredient" name="ingredient">
                                 <option value="" selected disabled hidden>Ingredient</option>
@@ -103,7 +103,7 @@
                         <div class="carousel-item active">
                             <div class="row">
                                 {{#each data}}
-                                    <div class="col-md-4 mb-3">
+                                    <div class="col-md-3 mb-3">
                                         <div class="card card-style">
                                             <img class="img-fluid" src={{this.img}} alt="" >
                                             <div class="card-body">

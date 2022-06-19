@@ -12,11 +12,11 @@
                                 <img src="https://bootstrapious.com/i/snippets/sn-profile/teacher.jpg" alt="" width="130" class="rounded mb-2 img-thumbnail">
                             </div>
                             <div class="media-body text-white">
-                                <h4 class="mt-0 mb-0">Manuella Tarly</h4>
+                                <h4 class="mt-0 mb-0">{{user.alias}}</h4>
                             </div>
                         </div>
                         <div class="col-md-2">
-                            <a href="/logout" class=" all-buttons logout btn-sm btn-secondary">Αποσύνδεση</a>
+                            <a href="/nonRegHome" class=" all-buttons logout btn-sm btn-secondary">Αποσύνδεση</a>
                         </div>
                     </div>
                    
@@ -26,7 +26,7 @@
             <div class="bg-light text-center px-3">
                 <ul class="list-inline d-flex justify-content-between py-2">
                     <li>
-                        <h5 class="font-weight-bold">({{data.length}}</h5><small class="text-muted"> <i class="fa fa-picture-o mr-1"></i>Οι συνταγές μου</small>
+                        <h5 class="font-weight-bold">4</h5><small class="text-muted"> <i class="fa fa-picture-o mr-1"></i>Οι συνταγές μου</small>
                     </li>
                     <li>
                         <h5 class="font-weight-bold">0</h5><small class="text-muted"> <i class="fa fa-user-circle-o mr-1"></i>Αποθηκευμένα</small>
@@ -43,7 +43,7 @@
                 </div>
                 <div class="row">
                     {{#each data}}
-                        <div class="col-lg-6 mb-2 pr-lg-1"><a href="/regMyRecipe"><img src={{this.img}} alt="" class="img-fluid rounded shadow-sm"></a></div>
+                        <div class="col-lg-3 mb-2 pr-lg-1"><a href="/regMyRecipe?id={{this.recipe_id}}"><img src={{this.img}} alt="" class="img-fluid rounded shadow-sm"></a></div>
                     {{/each}}
                 </div>
                 <div class="py-4">
