@@ -3,7 +3,6 @@ import dotenv from "dotenv";
 import bcrypt from 'bcrypt';
 
 dotenv.config();
-console.log(process.env)
 
 const pool = new pg.Pool({
     connectionString: process.env.DATABASE_URL, //μεταβλητή περιβάλλοντος
@@ -45,7 +44,6 @@ async function getAllRecipes(callback) {
         const client = await connect();
         const res = await client.query(sql)
         await client.release()
-        console.log(res.rows);
         callback(null, res.rows) // επιστρέφει array
     }
     catch (err) {
@@ -54,7 +52,7 @@ async function getAllRecipes(callback) {
 }
 
 async function newRecipe (recipe, userID, callback) {
-    console.log('to insert...', recipe)
+    // console.log('to insert...', recipe)
     const sql = `INSERT INTO "recipe" ("belongs_to_user_user_id", "title", "category", "img", "ingredient", "description", "time", "portions", "level") 
         VALUES ('${userID}', '${recipe.title}', '${recipe.category}', '${recipe.img}', '${recipe.ingredient}', '${recipe.description}', '${recipe.time}', '${recipe.portions}', '${recipe.level}');`;
     try {
@@ -78,7 +76,7 @@ async function recipeInfo (callback) {
         const res1 = await client.query(sql1)
         const res2 = await client.query(sql2)
         const res3 = await client.query(sql3)
-        console.log(res1.rows, res2.rows, res3.rows)
+        // console.log(res1.rows, res2.rows, res3.rows)
         await client.release()
         callback(null, res1.rows, res2.rows, res3.rows) // επιστρέφει array
     } 
@@ -89,12 +87,12 @@ async function recipeInfo (callback) {
 
 async function findRecipe(recipeIngredient, recipeCategory, callback) {
     console.log('findRecipe with:', recipeIngredient, recipeCategory)
-    const sql = `SELECT * FROM "recipe" WHERE "ingredient" = '${recipeIngredient}' AND "category" = '${recipeCategory}' ;`;
+    const sql = `SELECT * FROM "recipe" WHERE "ingredient" = '${recipeIngredient}' AND "category" = '${recipeCategory}';`;
     try {
         const client = await connect();
         const res = await client.query(sql)
         await client.release()
-        callback(null, res.rows) // επιστρέφει array
+        callback(null, res.rows)
     } 
     catch (err) {
             callback(err, null);
@@ -107,7 +105,7 @@ async function openRecipe(recipeID, callback) {
         const client = await connect();
         const res = await client.query(sql)
         await client.release()
-        callback(null, res.rows) // επιστρέφει array
+        callback(null, res.rows)
     } 
     catch (err) {
         callback(err, null);
@@ -123,12 +121,12 @@ async function updateRecipe (recipe, recipeID, callback) {
         }
     }
     try {
-        console.log(sql);
+        // console.log(sql);
         for (let query in sql) {
             const client = await connect();
             const res = await client.query(sql[query])
             await client.release();
-            console.log(`Row(s) updated`);
+            // console.log(`Row(s) updated`);
             callback(null, res.rows) // επιστρέφει array
         }  
     } 
@@ -140,13 +138,12 @@ async function updateRecipe (recipe, recipeID, callback) {
 
 async function deleteRecipe (recipe_id, callback) {
     const sql = `DELETE FROM "recipe" WHERE "recipe_id" = '${recipe_id}';`;
-    console.log(recipe_id)
     try {
         const client = await connect();
         const res = await client.query(sql)
         await client.release();
-        console.log(`Recipe deleted`);
-        callback(null, res.rows) // επιστρέφει array
+        // console.log(`Recipe deleted`);
+        callback(null, res.rows) 
     } 
     catch (err) {
         console.log(err);
@@ -178,7 +175,7 @@ async function insertUser (name, surname, alias, email, password, callback) {
         const client = await connect();
         const res = await client.query(sql);
         await client.release();
-        console.log(`user inserted`);
+        // console.log(`user inserted`);
         callback(null, [{"userName": alias}]) // επιστρέφει array
     } 
     catch (err) {
@@ -202,9 +199,9 @@ async function findUser(email, password, callback) {
             callback("Wrong email. Try again.", null);
         }
         else {
-            console.log(`user found`);
+            // console.log(`user found`);
             const check = await bcrypt.compare(password, res.rows[0].password);
-            console.log(check);
+            // console.log(check);
             if (check) {
                 callback(null, res.rows[0]) // επιστρέφει array
             }
@@ -222,12 +219,12 @@ async function findUser(email, password, callback) {
 
 async function loadUser(userID, callback) {
     const sql = `SELECT * FROM "user" WHERE "user_id" = '${userID}';`; 
-    console.log('new sql...', sql) 
+    // console.log('new sql...', sql) 
     try {
         const client = await connect();
         const res = await client.query(sql);
         await client.release();
-        console.log(`user found`);
+        // console.log(`user found`);
         callback(null, res.rows[0]) // επιστρέφει array
     } 
     catch (err) {

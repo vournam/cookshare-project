@@ -17,16 +17,16 @@
                 <img id="card-img" src={{image.img}} alt="">
             </div>
         </div>
-        <h1 class="title text-center"></h1>
+        <h1 class="title text-center">{{image.title}}</h1>
         <hr>
         <div class="row mx-1">
-                <div class="col d-flex justify-content-start"><a class="all-buttons btn btn-secondary btn-block" href="/edit?id={{image.recipe_id}}" role="button"><i class="fa-solid fa-pencil"></i> Επεξεργασία συνταγής</a></div>
-            <div class="col d-flex justify-content-end"><a class="all-buttons btn btn-secondary btn-block" href="/delete?id={{image.recipe_id}}" role="button"><i class="fa-solid fa-trash-can"></i> Διαγραφή συνταγής</a></div>
+                <div class="col d-flex justify-content-start"><a class="all-buttons btn btn-secondary btn-block" href="/edit?id={{image.recipe_id}}" role="button"><i class="fa-solid fa-pencil"></i> Edit recipe</a></div>
+            <div class="col d-flex justify-content-end"><a class="all-buttons btn btn-secondary btn-block" href="/delete?id={{image.recipe_id}}" role="button"><i class="fa-solid fa-trash-can"></i> Delete recipe</a></div>
         </div>
         <hr>
-        <div class="row">
+        <div class="row mx-1">
             <div class="col mx-2 mb-3">
-                {{this.description}}
+                <pre>{{image.description}}</pre>
                 <hr>
                 <div><i class="fas fa-user-circle"></i> user</div>
             </div>

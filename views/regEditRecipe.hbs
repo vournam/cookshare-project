@@ -15,7 +15,7 @@
                             <label><i class="fa-solid fa-folder-open"></i> Category</label>
                             <select class="form-control form-control-sm" name="category" id="categories">
                                 <option value="" selected disabled hidden>Select category...</option>
-                                <option type="button" selected>{{data.category}}</option>
+                                <option type="button" selected disabled>{{data.category}}</option>
                                 {{#each category}}
                                     <option type="button">{{this.category_name}}</option>
                                 {{/each}}

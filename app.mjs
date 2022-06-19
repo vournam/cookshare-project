@@ -78,15 +78,15 @@ app.get("/regAddRecipe", (req, res) => {
 // POST /AddRecipe
 app.post("/regAddRecipe", (req, res) => {
     if(req.session.userID) {
-        console.log('post regAddrecipe')
-        const newRecipe = {"title":req.body.title, "img":req.body.img, "ingredient":req.body.ingredient, "category":req.body.category, "description":req.body.description, "time":req.body.time, "portions":req.body.portions, "level":req.body.level } 
-        model.newRecipe(newRecipe, req.session.userID,
-        (err, data)=> {
-            if (err)
-                return console.error(err.message);
-            else
-                res.redirect("/regAllRecipes");
-            });
+        const newRecipe = {"title":req.body.title, "img":req.body.img, "ingredient":req.body.ingredient, "category":req.body.category, "description":req.body.description, "time":req.body.time, "portions":req.body.portions, "level":req.body.level }
+        model.newRecipe(newRecipe, req.session.userID,(err, data)=> {
+            if (err) {
+                 return console.error(err.message);
+            } 
+            else {
+                res.redirect("/regProfile");
+            }  
+        });
     }
     else{
         res.redirect('/signIn');
@@ -110,8 +110,8 @@ app.get("/regAllRecipes", (req, res) => {
 // POST /nonRegSearch
 app.post("/nonRegSearch", (req, res) => {
     // console.log("POST /nonRegSearch keys=", req.body.ingredient, req.body.category);
-    const ingredient = req.body.ingredient.charAt(0).toUpperCase() + req.body.ingredient.slice(1);
-    const category = req.body.category.charAt(0).toUpperCase() + req.body.category.slice(1);
+    const ingredient = req.body.ingredient.charAt(0).toLowerCase() + req.body.ingredient.slice(1);
+    const category = req.body.category.charAt(0).toLowerCase() + req.body.category.slice(1);
     model.findRecipe(ingredient, category, (err, row) => {
     if (err) {
         res.send(err);
@@ -122,9 +122,23 @@ app.post("/nonRegSearch", (req, res) => {
     });
 });
 
+// POST /regSearch
+app.post("/regSearch", (req, res) => {
+    // console.log("POST /regSearch keys=", req.body.ingredient, req.body.category);
+    const ingredient = req.body.ingredient.charAt(0).toLowerCase() + req.body.ingredient.slice(1);
+    const category = req.body.category.charAt(0).toLowerCase() + req.body.category.slice(1);
+    model.findRecipe(ingredient, category, (err, row) => {
+    if (err) {
+        res.send(err);
+    } else {
+        // console.log('post /regSearch recipe to search', row);
+        res.render("regSearch", { data: row });
+    }
+    });
+});
+
 // POST /register
 app.post("/register", (req, res) => {
-    // console.log("POST /nonRegSearch keys=", req.body.name, req.body.surname, req.body.alias, req.body.email, req.body.password);
     const name = req.body.name;
     const surname = req.body.surname;
     const alias = req.body.alias;
@@ -134,7 +148,6 @@ app.post("/register", (req, res) => {
         if (err) {
             res.send(err);
         } else {
-            // console.log('post /nonRegSearch recipe to search', row);
             res.redirect("signIn");
         }
         });
@@ -149,10 +162,10 @@ app.post("/signIn", (req, res) => {
         if (err) {
             res.send(err);
         } else {
-            console.log('post /signIn user', row);
+            // console.log('post /signIn user', row);
             req.session.userID = row.user_id;
             req.session.save();
-            console.log(req.session);
+            // console.log(req.session);
             res.redirect("/regHome");
         }
         });
@@ -169,7 +182,12 @@ app.get("/regHome", (req, res) => {
         const newRows = rows.filter( function(value) {
             return value.belongs_to_user_user_id != req.session.userID;
         })
-        res.render("regHome", { data: newRows });
+        model.recipeInfo((err, category, ingredient, level) => {
+            if (err) {
+                return console.error(err.message);
+            }
+            res.render("regHome", { data: newRows, category: category, ingredient: ingredient, level: level });
+            });
         });
     }
    else {
@@ -184,7 +202,7 @@ app.get("/regHome", (req, res) => {
             if (err) {
                 res.send(err);
             } else {
-                console.log('post /signIn user', row);
+                // console.log('post /signIn user', row);
                 model.getMyRecipes(req.session.userID, (err, recipes) => {
                     if (err) {
                         res.send(err);
@@ -224,16 +242,13 @@ app.get("/regMyRecipe", (req, res) => {
 
 // GET /edit/:recipe_id
 app.get("/edit/", (req, res) => {
-    console.log("GET /edit/:id session=", req.session);
     if(req.session.userID){
         const id = req.query.id;
-        console.log(id);
         model.openRecipe(id, (err,rows)=> {
             if(err){
                 return console.error(err.message);
             }
             else {
-                console.log(rows);
                 model.recipeInfo((err,category, ingredient, level)=> {
                     if(err){
                         return console.error(err.message);
@@ -253,14 +268,13 @@ app.get("/edit/", (req, res) => {
   
 // POST /edit/:recipe_id
 app.post("/regEditRecipe", (req, res) => {
-    const recipe = {"title":req.body.title, "img":req.body.img, "ingredient":req.body.ingredient, "category":req.body.category, "description":req.body.description, "time":req.body.time, "portions":req.body.portions, "level":req.body.level}
-    model.updateRecipe(recipe, req.body.id, (err, data) => {
-      console.log('in POST', err, data)
+    const updateRecipe = {"title":req.body.title, "img":req.body.img, "ingredient":req.body.ingredient, "category":req.body.category, "description":req.body.description, "time":req.body.time, "portions":req.body.portions, "level":req.body.level}
+    model.updateRecipe(updateRecipe, req.body.id, (err, data) => {
       if(err){
         return console.error(err.message);
       }
       else {
-        res.redirect("/regAllRecipes");
+        res.redirect("/regProfile");
       }  
     });
 });
@@ -268,19 +282,18 @@ app.post("/regEditRecipe", (req, res) => {
 // GET /delete/:recipe_id
 app.get("/delete/", (req, res) => {
     if(req.session.userID){
-        const id = req.query.id;
-        console.log(id);
-        model.deleteRecipe(id, (err, res) => {
+        const recipeID = req.query.id;
+        model.deleteRecipe(recipeID, (err, data) => {
             if (err) {
                 return console.error(err.message);
             }
             else{
-                res.redirect("/regHome");
+                res.redirect("/regProfile");
             }
-        })
+        });
     }
     else{
-        redirect('/signIn');
+        res.redirect('/signIn');
     }
 });
 

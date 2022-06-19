@@ -4,7 +4,7 @@
     <div class="my-2">
         <h4><i class="fa-solid fa-pen-to-square"></i> Add new recipe</h4>
         <div class="py-3">
-            <form method="POST">
+            <form method="POST" id="addRecipe">
                 <div class="form-group mb-2">
                     <div class="row mb-4">
                         <div class="col-md-4">
@@ -25,7 +25,7 @@
                             <select class="form-control form-control-sm" name="ingredient">
                                 <option value="" selected disabled hidden>Select basic ingredient...</option>
                                 {{#each ingredient}}
-                                    <option value="pork" type="button">{{this.ingredient_name}}</option>
+                                    <option value={{this.ingredient_name}} type="button">{{this.ingredient_name}}</option>
                                 {{/each}}
                             </select>
                         </div>
@@ -54,7 +54,7 @@
                     <h4 class="pt-2"> Recipe's description</h4>
                     <div class="py-2">
                         <div class="mb-2">
-                            <textarea class="form-control" placeholder="Write the recipe's ingredients and directions..." name="description" rows="8"></textarea>
+                            <textarea class="form-control" placeholder="Write the recipe's ingredients and directions..." name="description" form="addRecipe" rows="8"></textarea>
                         </div>
                         <div class="row">
                             <div class="col-md-12">

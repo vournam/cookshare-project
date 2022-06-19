@@ -1,61 +1,53 @@
 {{> regNavbar}}
 
 <div class="row">
-    <div class="col-md-6 col-sm-10 mx-auto">
+    <div class="col-sm-6 mx-auto bg-white shadow rounded overflow-hidden">
         <!-- Profile widget -->
-        <div class="bg-white shadow rounded overflow-hidden">
-            <div class="px-4 pt-3 pb-2 bg-dark">
-                <div class="media profile-header">
-                    <div class="row">
-                        <div class="col-md-10">
-                            <div class="profile">
-                                <img src="https://bootstrapious.com/i/snippets/sn-profile/teacher.jpg" alt="" width="130" class="rounded mb-2 img-thumbnail">
-                            </div>
-                            <div class="media-body text-white">
-                                <h4 class="mt-0 mb-0">{{user.alias}}</h4>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <a href="/nonRegHome" class=" all-buttons logout btn-sm btn-secondary">Αποσύνδεση</a>
-                        </div>
+        <div class="px-4 py-5 my-2 bg-dark">
+            <div class="row">
+                <div class="col-sm-10">
+                    <div class="text-white">
+                        <h1 class="mt-0 mb-0" style="font-size: 18px;"> {{user.alias}} profile</h1>
                     </div>
-                   
+                </div>
+                <div class="col px-2">
+                    <a href="/nonRegHome" class="logout btn btn-danger">Logout</a>
                 </div>
             </div>
+        </div>
 
-            <div class="bg-light text-center px-3">
-                <ul class="list-inline d-flex justify-content-between py-2">
-                    <li>
-                        <h5 class="font-weight-bold">4</h5><small class="text-muted"> <i class="fa fa-picture-o mr-1"></i>Οι συνταγές μου</small>
-                    </li>
-                    <li>
-                        <h5 class="font-weight-bold">0</h5><small class="text-muted"> <i class="fa fa-user-circle-o mr-1"></i>Αποθηκευμένα</small>
-                    </li>
-                    <li>
-                        <a href="#" class=" all-buttons btn btn-secondary mt-2">Επεξεργασία προφίλ</a>
-                    </li>
-                </ul>
+        <div class="bg-light text-center px-3">
+            <ul class="list-inline d-flex justify-content-between py-4">
+                <li>
+                    <h5 class="font-weight-bold">4</h5><small class="text-muted"> <i class="fa fa-picture-o mr-1"></i>My recipes</small>
+                </li>
+                <li>
+                    <h5 class="font-weight-bold">0</h5><small class="text-muted"> <i class="fa fa-user-circle-o mr-1"></i>Saved recipes</small>
+                </li>
+                <li>
+                    <a href="#" class=" all-buttons btn btn-secondary mt-2">Edit profile</a>
+                </li>
+            </ul>
+        </div>
+        <div class="py-2 px-4">
+            <div class="d-flex align-items-center justify-content-between mb-3">
+                <h5 class="mb-0">My latest recipes</h5><a href="/regAllRecipes" class=" all-buttons btn btn-secondary btn-sm mt-2">See in detail</a>
             </div>
-
-            <div class="py-4 px-4">
+            <div class="row">
+                {{#each data}}
+                    <div class="col-lg-3 mb-2 pr-lg-1"><a href="/regMyRecipe?id={{this.recipe_id}}"><img src={{this.img}} alt="" class="img-fluid rounded shadow-sm"></a></div>
+                {{/each}}
+            </div>
+            <div class="py-4">
                 <div class="d-flex align-items-center justify-content-between mb-3">
-                    <h5 class="mb-0">Οι πρόσφατες συνταγές μου</h5><a href="/regAllRecipes" class=" all-buttons btn btn-secondary btn-sm mt-2">Δες αναλυτικά</a>
+                    <h5 class="mb-3">Latest saved recipes</h5><a href="/regSaved" class=" all-buttons btn btn-secondary btn-sm mt-2">See in detail</a>
                 </div>
-                <div class="row">
-                    {{#each data}}
-                        <div class="col-lg-3 mb-2 pr-lg-1"><a href="/regMyRecipe?id={{this.recipe_id}}"><img src={{this.img}} alt="" class="img-fluid rounded shadow-sm"></a></div>
-                    {{/each}}
-                </div>
-                <div class="py-4">
-                    <div class="d-flex align-items-center justify-content-between mb-3">
-                        <h5 class="mb-3">Πρόσφατα αποθηκευμένα</h5><a href="/regSaved" class=" all-buttons btn btn-secondary btn-sm mt-2">Δες αναλυτικά</a>
-                    </div>
-                    <div class="p-4 bg-light rounded shadow-sm">
-                        <p class="font-italic mb-0">Δεν υπάρχει αποθηκευμένη συνταγή.</p>
-                    </div>
+                <div class="p-4 bg-light rounded shadow-sm">
+                    <p class="font-italic mb-0">There is no saved recipe.</p>
                 </div>
             </div>
-        </div><!-- End profile widget -->
+        </div>
+        <!-- End profile widget -->
 
     </div>
 </div>
