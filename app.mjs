@@ -43,11 +43,19 @@ next();
 
 // GET /nonRegHome with /
 app.get("/", (req, res) => {
-    model.getAllRecipes( (err, rows) => {
+    if(req.session.userID) {
+        req.session.destroy();
+    }
+    model.getAllRecipes((err, rows) => {
       if (err) {
         return console.error(err.message);
       }
-      res.render("nonRegHome", { data: rows });
+        model.recipeInfo((err, category, ingredient, level) => {
+            if (err) {
+                return console.error(err.message);
+            }
+            res.render("nonRegHome", { data: rows, category: category, ingredient: ingredient, level: level });
+        });
     });
 });
 
@@ -60,79 +68,26 @@ app.get("/nonRegHome", (req, res) => {
       if (err) {
         return console.error(err.message);
       }
-    //   console.log("nonReg feed...", rows)
-      res.render("nonRegHome", { data: rows });
-    });
-});
-
-// GET /AddRecipe
-app.get("/regAddRecipe", (req, res) => {
-    model.recipeInfo((err, category, ingredient, level) => {
-    if (err) {
-        return console.error(err.message);
-    }
-    res.render("regAddRecipe", { category: category, ingredient: ingredient, level: level });
-    });
-});
-
-// POST /AddRecipe
-app.post("/regAddRecipe", (req, res) => {
-    if(req.session.userID) {
-        const newRecipe = {"title":req.body.title, "img":req.body.img, "ingredient":req.body.ingredient, "category":req.body.category, "description":req.body.description, "time":req.body.time, "portions":req.body.portions, "level":req.body.level }
-        model.newRecipe(newRecipe, req.session.userID,(err, data)=> {
+        model.recipeInfo((err, category, ingredient, level) => {
             if (err) {
-                 return console.error(err.message);
-            } 
-            else {
-                res.redirect("/regProfile");
-            }  
+                return console.error(err.message);
+            }
+            res.render("nonRegHome", { data: rows, category: category, ingredient: ingredient, level: level });
         });
-    }
-    else{
-        res.redirect('/signIn');
-    }
-     
-});
-
-// GET /regAllRecipes
-app.get("/regAllRecipes", (req, res) => {
-    const userID = 1 || req.session.user_id;
-    const userName = 'melCook' || req.session.alias;
-    model.getMyRecipes(userID, (err, rows) => {
-      if (err) {
-        return console.error(err.message);
-      }
-    //   console.log("recipes to show...", rows)
-      res.render("regAllRecipes", { data: rows });
     });
 });
 
 // POST /nonRegSearch
 app.post("/nonRegSearch", (req, res) => {
     // console.log("POST /nonRegSearch keys=", req.body.ingredient, req.body.category);
-    const ingredient = req.body.ingredient.charAt(0).toLowerCase() + req.body.ingredient.slice(1);
-    const category = req.body.category.charAt(0).toLowerCase() + req.body.category.slice(1);
+    const ingredient = req.body.ingredient.charAt(0).toUpperCase() + req.body.ingredient.slice(1);
+    const category = req.body.category.charAt(0).toUpperCase() + req.body.category.slice(1);
     model.findRecipe(ingredient, category, (err, row) => {
     if (err) {
         res.send(err);
     } else {
         // console.log('post /nonRegSearch recipe to search', row);
         res.render("nonRegSearch", { data: row });
-    }
-    });
-});
-
-// POST /regSearch
-app.post("/regSearch", (req, res) => {
-    // console.log("POST /regSearch keys=", req.body.ingredient, req.body.category);
-    const ingredient = req.body.ingredient.charAt(0).toLowerCase() + req.body.ingredient.slice(1);
-    const category = req.body.category.charAt(0).toLowerCase() + req.body.category.slice(1);
-    model.findRecipe(ingredient, category, (err, row) => {
-    if (err) {
-        res.send(err);
-    } else {
-        // console.log('post /regSearch recipe to search', row);
-        res.render("regSearch", { data: row });
     }
     });
 });
@@ -150,7 +105,7 @@ app.post("/register", (req, res) => {
         } else {
             res.redirect("signIn");
         }
-        });
+    });
 });
 
 // POST /signIn
@@ -195,8 +150,66 @@ app.get("/regHome", (req, res) => {
     }
 });
 
- // Profile - registered
- app.get("/regProfile", (req, res) => {
+// GET /AddRecipe
+app.get("/regAddRecipe", (req, res) => {
+    model.recipeInfo((err, category, ingredient, level) => {
+    if (err) {
+        return console.error(err.message);
+    }
+    res.render("regAddRecipe", { category: category, ingredient: ingredient, level: level });
+    });
+});
+
+// POST /AddRecipe
+app.post("/regAddRecipe", (req, res) => {
+    if(req.session.userID) {
+        const newRecipe = {"title":req.body.title, "img":req.body.img, "ingredient":req.body.ingredient, "category":req.body.category, "description":req.body.description, "time":req.body.time, "portions":req.body.portions, "level":req.body.level }
+        // console.log(newRecipe);
+        model.newRecipe(newRecipe, req.session.userID,(err, data)=> {
+            if (err) {
+                 return console.error(err.message);
+            } 
+            else {
+                res.redirect("/regProfile");
+            }  
+        });
+    }
+    else{
+        res.redirect('/signIn');
+    }
+     
+});
+
+// GET /regAllRecipes
+app.get("/regAllRecipes", (req, res) => {
+    const userID = 1 || req.session.user_id;
+    const userName = 'melCook' || req.session.alias;
+    model.getMyRecipes(userID, (err, rows) => {
+      if (err) {
+        return console.error(err.message);
+      }
+    //   console.log("recipes to show...", rows)
+      res.render("regAllRecipes", { data: rows });
+    });
+});
+
+// POST /regSearch
+app.post("/regSearch", (req, res) => {
+    // console.log("POST /regSearch keys=", req.body.ingredient, req.body.category);
+    const ingredient = req.body.ingredient.charAt(0).toUpperCase() + req.body.ingredient.slice(1);
+    const category = req.body.category.charAt(0).toUpperCase() + req.body.category.slice(1);
+    model.findRecipe(ingredient, category, (err, row) => {
+    if (err) {
+        res.send(err);
+    } else {
+        // console.log('post /regSearch recipe to search', row);
+        res.render("regSearch", { data: row });
+    }
+    });
+});
+
+// Profile - registered
+app.get("/regProfile", (req, res) => {
     if(req.session.userID) {
         model.loadUser(req.session.userID, (err, row) => {
             if (err) {
@@ -210,35 +223,76 @@ app.get("/regHome", (req, res) => {
                     else {
                         res.render("regProfile", { user: row, data: recipes });
                     }
-                })
+                });
                 
             }
         });
     }
-   else {
-       res.redirect("/signIn");
-   }
-   
+    else {
+        res.redirect("/signIn");
+    }
 });
 
-// My recipe - registered
+// Open my recipe - registered
 app.get("/regMyRecipe", (req, res) => {
     if(req.session.userID) {
        model.openRecipe( req.query.id, (err,row) => {
             if (err) {
                 res.send(err);
             } else {
-                res.render("regMyRecipe", { image: row[0] });
+                model.loadUser( row[0].belongs_to_user_user_id, (err,user) => {
+                    if (err) {
+                        res.send(err);
+                    } else { 
+                        res.render("regMyRecipe", { image: row[0], user: user});
+                    }
+                });
             }
        })
-
     }
    else {
        res.redirect("/signIn");
-   }
-   
+   } 
 });
 
+// Open any recipe - registered
+app.get("/regRecipe", (req, res) => {
+    if(req.session.userID) {
+       model.openRecipe( req.query.id, (err,row) => {
+            if (err) {
+                res.send(err);
+            } else {
+                model.loadUser( row[0].belongs_to_user_user_id, (err,user) => {
+                    if (err) {
+                        res.send(err);
+                    } else { 
+                        res.render("regRecipe", { image: row[0], user: user});
+                    }
+                });
+            }
+       });
+    }
+    else {
+       res.redirect("/signIn");
+    } 
+});
+
+// Open any recipe - nonRegistered
+app.get("/nonRegRecipe", (req, res) => {
+    model.openRecipe( req.query.id, (err,row) => {
+        if (err) {
+            res.send(err);
+        } else {
+            model.loadUser( row[0].belongs_to_user_user_id, (err,user) => {
+                if (err) {
+                    res.send(err);
+                } else { 
+                    res.render("nonRegRecipe", { image: row[0], user: user});
+                }
+            });
+        }
+    });
+});
 
 // GET /edit/:recipe_id
 app.get("/edit/", (req, res) => {

@@ -28,22 +28,22 @@
             <div class="col mx-2 mb-3">
                 <pre>{{image.description}}</pre>
                 <hr>
-                <div><i class="fas fa-user-circle"></i> user</div>
+                <div><i class="fas fa-user-circle"></i> {{user.alias}}</div>
             </div>
         </div>
     </div>
-     {{!-- Reviews --}}
-     <div class="reviews my-3">
+    {{!-- Reviews --}}
+    <div class="reviews my-3">
         <div class="row">
-            <div class="col my-3">
-                <h4><i class="far fa-star"></i> Κριτικές &amp; Αξιολόγηση</h4>
+            <div class="col my-3 mx-2">
+                <h4><i class="far fa-star"></i> Reviews &amp; Evaluation</h4>
                 <hr>
                 <ul class="commentlist mx-3">
                     <li>
                         <div class="row">
                             <div class="col d-flex justify-content-start">
                                 <div class="user-comment"><i class="fas fa-user-circle"></i> Spiridoula.vas12</div>
-                                <span class="date">15 Ιουλίου, 2016</span>
+                                <span class="date">15 July, 2016</span>
                             </div>
                             <div class="row">
                                 <div class="col d-flex justify-content-start pb-3">
@@ -57,14 +57,14 @@
                                 </div>
                             </div>
                         </div>
-                        <p>Πολύ εύκολη συνταγή! Την δοκίμασα εχθές για πρωινό και ενθουσιάστηκα.</p>
+                        <p>Very easy recipe! I tried it yesterday for breakfast and I was excited.</p>
                     </li>
                     <hr>
                     <li>
                         <div class="row">
                             <div class="col d-flex justify-content-start">
                                 <div class="user-comment"><i class="fas fa-user-circle"></i> Andrew Georg</div>
-                                <span class="date">23 Ιουνίου, 2016</span>
+                                <span class="date">23 June, 2016</span>
                             </div>
                         </div>
                         <div class="row">
@@ -78,7 +78,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p>Θα προτιμούσα να μην είχε καρύδα. Κατά τα άλλα ήταν νόστιμα.</p>
+                        <p>I would rather not have coconut. Otherwise they were delicious.</p>
                     </li>
                 </ul>
             </div>
@@ -88,8 +88,8 @@
             <div class="row">
                 <div class="col pb-4 px-5">
                     <form>
-                        <input type="text" id="comment" name="comment" placeholder="Πρόσθεσε ένα σχόλιο..." value="">
-                        <input type="submit" value="Υποβολή">
+                        <input type="text" id="comment" name="comment" placeholder="Add a comment..." value="">
+                        <input type="submit" value="Submit">
                     </form>
                 </div>
             </div>

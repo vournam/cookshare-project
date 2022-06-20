@@ -1,56 +1,86 @@
 {{> nonRegNavbar}}
 
  {{!-- Recipe area --}}
-    <div id="recipe-area" class="container">
-        <div class="card">
-            <div class="recipe-info">
-                <div class="row">
-                    <div class="col d-flex justify-content-around py-3">
-                        <i class="fa-solid fa-clock"> 40 minutes</i>
-                        <i class="fa fa-users"> 2 portions</i>
-                        <i class="fa fa-chart-simple"> Easy</i>
-                    </div>
+<div id="recipe-area" class="container">
+    <div class="card">
+        <div class="recipe-info">
+            <div class="row">
+                <div class="col d-flex justify-content-around py-3">
+                    <i class="fa-solid fa-clock"> {{image.time}}</i>
+                    <i class="fa fa-users"> {{image.portions}}</i>
+                    <i class="fa fa-chart-simple"> {{image.level}}</i>
                 </div>
             </div>
-            <div class="row">
-                <div class="col pb-3">
-                    <img id="card-img" src="https://drive.google.com/uc?id=1DpYd27NlHl8YOxN1flccZfyZemfB1ps9" alt="">
-                </div>
+        </div>
+        <div class="row">
+            <div class="col pb-3">
+                <img id="card-img" src={{image.img}} alt="">
             </div>
-            <h1 class="title text-center">Fluffy pancakes with coconut</h1>
-            <hr>
-            <div class="row">
-                <div class="col mx-2 mb-3">
-                    <h3>Ingredients</h3>
-                    <ul>
-                        <li><strong>40 gr</strong> oats</li>
-                        <li><strong>30 gr</strong> grated dried coconut</li>
-                        <li><strong>60 ml</strong> milk (any of your choice)</li>
-                        <li><strong>2 teaspoons</strong> baking powder</li>
-                        <li><strong>2</strong> eggs</li>
-                        <li><strong>2 tablespoons</strong> flour</li>
-                        <li><strong>1/4 teaspoon</strong> salt</li>
-                    </ul>
-                    <h4>Toppings</h4>
-                    <ul>
-                        <li><strong>2 tablespoons</strong> honey</li>
-                        <li><strong>6 tablespoons</strong> forest fruits (frozen or not)</li>
-                    </ul>
-                    <h3>Directions</h3>
-                    <ol>
-                        <li>Put all the ingredients in the multi and beat for 1 minute.</li>
-                        <li>Put a little fat in a non-stick pan and clean with a paper towel.</li>
-                        <li>Put the pan on high heat and as soon as it heats up, take the mixture with 1 tablespoon and place it carefully. Cover the pan with a large lid and lower the heat to medium.</li>
-                        <li>Leave each side of the pancake for 1 minute and remove.</li>
-                        <li>For the toppings, put the honey and the fruit in a pan on a low heat. Leave for 2 minutes until they soften.</li>
-                        <li>Place on top of the pancakes and add a little coconut at the end.</li>
-                    </ol>
+        </div>
+        <h1 class="title text-center">{{image.title}}</h1>
+        <hr>
+        <div class="row mx-1">
+            <div class="col mx-2 mb-3">
+                <pre>{{image.description}}</pre>
+                <hr>
+                <div><i class="fas fa-user-circle"></i> {{user.alias}}</div>
+            </div>
+        </div>
+    </div>    
+    {{!-- Reviews --}}
+    <div class="reviews my-3">
+        <div class="row">
+            <div class="col my-3 mx-2">
+                <h4><i class="far fa-star"></i> Reviews &amp; Evaluation</h4>
+                <hr>
+                <ul class="commentlist mx-3">
+                    <li>
+                        <div class="row">
+                            <div class="col d-flex justify-content-start">
+                                <div class="user-comment"><i class="fas fa-user-circle"></i> Spiridoula.vas12</div>
+                                <span class="date">15 July, 2016</span>
+                            </div>
+                            <div class="row">
+                                <div class="col d-flex justify-content-start pb-3">
+                                    <div class="rating-comments">
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star" aria-hidden="true"></i>
+                                        <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p>Very easy recipe! I tried it yesterday for breakfast and I was excited.</p>
+                    </li>
                     <hr>
-                    <div><i class="fas fa-user-circle"></i> mary123</div>
-                </div>
+                    <li>
+                        <div class="row">
+                            <div class="col d-flex justify-content-start">
+                                <div class="user-comment"><i class="fas fa-user-circle"></i> Andrew Georg</div>
+                                <span class="date">23 June, 2016</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col d-flex justify-content-start pb-3">
+                                <div class="rating-comments">
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <p>I would rather not have coconut. Otherwise they were delicious.</p>
+                    </li>
+                </ul>
             </div>
-        </div>    
+        </div>
     </div>
-    {{!-- End recipe area --}}
+    {{!-- End reviews --}} 
+</div>
+{{!-- End recipe area --}}
 
 {{> footer}}
