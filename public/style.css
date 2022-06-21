@@ -179,6 +179,18 @@ body {
     box-shadow: none;
 }
 
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+    background-color: grey;
+}
+
+.nav-link:active {
+    color: white;
+}
+
+.nav-link {
+    color: black;
+}
+
 /* 4. Single recipe page - non registered user*/
 .title {
     font-size: 1.5rem;

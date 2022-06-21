@@ -1,21 +1,19 @@
 # CookShare - Cooking Network CRUD app in Nodejs/Express with PostgreSQL deployed in Heroku
 
-1. Git clone the project from the above link locally on your computer.
-2. Navigate to the location of the file in the terminal and then run: 
+1. Aποσυμπιέστε το αρχείο στον φάκελο και στη συνέχεια τρέξτε:
+> npm init
+(θα δημιουργήσει τον φάκελο package.json)
 
-> npm init 
-(this command will create the package.json file)
+> npm install
+(θα δημιουργήσει τον φάκελο node_modules με τα όλα τα dependencies του πρότζεκτ που βρίσκονται στο package.json)
 
-> npm install 
-(this command will create the node_modules file with all the project’s dependencies in the package.json file)
+2. Στην συνέχεια, τρέξτε από το τερματικό σας:
+> npm start
 
-After that, run from your terminal: 
-
-> npm start (We used a nodemon to automatically update the server with each change. This was done in the terminal by downloading the module from the node package manager:
+(Χρησιμοποιήσαμε nodemon ώστε να ενημερώνεται αυτόματα σε κάθε αλλαγή ο server. Αυτό έγινε στο τερματικό κατεβάζοντας το module από το node package manager:
 
 > npm install --save-dev nodemon
- 
-and then in the scripts of package.json we added in "scripts" the following:
-"start": "nodemon app.mjs" )
 
+και έπειτα στα scripts του package.json προστέθηκε στα "scripts":
+"start": "nodemon app.mjs" )
 
