@@ -18,58 +18,21 @@
                 <div class="d-flex justify-content-center">
                     <form action="nonRegSearch" method="post" class="row no-gutters">
                         <div class="col-md-4 px-0">
-                            <select class="form-control form-control-sm basic-ingredient" name="ingredient">
+                           <select class="form-control form-control-sm basic-ingredient" name="ingredient">
                                 <option value="" selected disabled hidden>Ingredient</option>
                                 <option value="" type="button">------------</option>
-                                <option value="pork" type="button">Pork</option>
-                                <option value="chicken" type="button">Chicken</option>
-                                <option value="calf" type="button">Calf</option>
-                                <option value="lamb" type="button">Lamb</option>
-                                <option value="turkey" type="button">Turkey</option>
-                                <option value="sweet" type="button">Goat</option>
-                                <option value="cheese" type="button">Cheese</option>
-                                <option value="rice" type="button">Rice</option>
-                                <option value="pasta" type="button">Pasta</option>
-                                <option value="legumes" type="button">Legumes</option>
-                                <option value="fish" type="button">Fish</option>
-                                <option value="potato" type="button">Potato</option>
-                                <option value="egg" type="button">Egg</option>
-                                <option value="milk" type="button">Milk</option>
-                                <option value="butter" type="button">Butter</option>
-                                <option value="oil" type="button">Olive oil</option>
-                                <option value="tomato" type="button">Tomato</option>
-                                <option value="carrot" type="button">Carrot</option>
-                                <option value="eggplant" type="button">Eggplant</option>
-                                <option value="zucchini" type="button">Zucchini</option>
-                                <option value="banana" type="button">Banana</option>
-                                <option value="apple" type="button">Apple</option>
-                                <option value="orange" type="button">Orange</option>
-                                <option value="strawberry" type="button">Strawberry</option>
-                                <option value="honey" type="button">Honey</option>
-                                <option value="tahini" type="button">Tahini</option>
-                                <option value="cocoa" type="button">Cocoa</option>
-                                <option value="nuts" type="button">Nuts</option>
-                                <option value="oats" type="button">Oats</option>
+                                {{#each ingredient}}
+                                    <option value={{this.ingredient_name}} type="button">{{this.ingredient_name}}</option>
+                                {{/each}}
                             </select>
                         </div>
                         <div class="col-md-4 px-0">
                             <select class="form-control form-control-sm categories text-nowrap" name="category">
                                 <option value="" selected disabled hidden>Category</option>
                                 <option value="" type="button">------------</option>
-                                <option value="breakfast" type="button">Breakfast</option>
-                                <option value="brunch" type="button">Brunch</option>
-                                <option value="appetizer" type="button">Αppetizer</option>
-                                <option value="main" type="button">Main</option>
-                                <option value="dinner" type="button">Dinner</option>
-                                <option value="sweet" type="button">Sweets</option>
-                                <option value="savory" type="button">Savory</option>
-                                <option value="drink" type="button">Drinks</option>
-                                <option value="snack" type="button">Snacks</option>
-                                <option value="kids" type="button">Kids</option>
-                                <option value="vegan" type="button">Vegan</option>
-                                <option value="light" type="button">Light</option>
-                                <option value="xmas" type="button">X-mas</option>
-                                <option value="easter" type="button">Easter</option>
+                                {{#each category}}
+                                    <option value="{{this.category_name}}" type="button">{{this.category_name}}</option>
+                                {{/each}}
                             </select>
                         </div>
                         <div class="search col-md-4 px-0">
@@ -86,7 +49,7 @@
 <section class=" feed pt-5 pb-5">
     <div class="container">
         <div class="row">
-            <div class="col-6">
+            <div class="col-6 d-flex justify-content-center">
                 <h1>Here are the latest recipes of our members.</h1>
             </div>
             <div class="col-6 text-end">
