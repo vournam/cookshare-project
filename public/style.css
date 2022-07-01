@@ -150,7 +150,6 @@ body {
 
 #pills-tabContent {
     border-radius: 10px;
-    width: 30rem;
 }
 
 .btn-dark {
@@ -167,7 +166,6 @@ body {
 
 .nav-pills {
     display:table !important;
-    width:100%;
 }
 
 #navig-item {

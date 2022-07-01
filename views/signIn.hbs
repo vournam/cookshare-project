@@ -2,48 +2,44 @@
 
 <div class="container px-5 mt-1 mb-5">
     <div class="row pt-3">
-        <div class="col-12">
+        <div class="col">
             <div class="logo text-center">
                 <img src="https://drive.google.com/uc?id=1ikjbHt9ThIFHVtuIcWKrnAGQMc6SIhqE" alt="">
                 <h1 id="site-title">CookShare</h1>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-md-6 d-flex justify-content-center mx-auto">
-            <div class="text-center align-items-center mt-2 mb-5">
-                <div id="sign-in-card" class="card mb-5">
-                    <ul class="nav nav-pills p-2" id="pills-tab" role="tablist">
-                        <li id="navig-item" class="nav-item navleft text-center">
-                            <a class="nav-link active btl" id="navigator-left" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Login</a>
-                        </li>
-                        <li id="navig-item" class="nav-item navright text-center">
-                            <a class="nav-link btr" id="navigator-right" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Register</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="pills-tabContent">
-                        <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-                            <form method="POST" name="login" class="sign-in-form p-4" >
-                                <input type="email" name="email" class="form-control" placeholder="Email" value="" required="required">
-                                <input type="password" name="password" class="form-control my-2" placeholder="Password" value="" required="required">
-                                <button class="all-buttons btn btn-light btn-block mt-3" style="width:15rem; border:1px solid grey;">Login</button>
-                            </form>
-                        </div>
-                        <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
-                            <form action="register" method="POST" name="register" class="sign-in-form p-4">
-                                <input type="text" name="name" class="form-control" placeholder="Name" value=""  required="required">
-                                <input type="text" name="surname" class="form-control my-2" placeholder="Surname" value=""  required="required">
-                                <input type="text" name="alias" class="form-control" placeholder="Username" value=""  required="required">
-                                <input type="email" name="email" class="form-control my-2" placeholder="Email" value=""  required="required">
-                                <input type="password" name="password" class="form-control" placeholder="Password" value=""  required="required">
-                                <button class="all-buttons btn btn-light btn-block mt-3" style="width:15rem; border:1px solid grey;" href="register">Register</button>
-                            </form>
-                        </div>  
-                    </div>
+    <div class="row d-flex justify-content-center">
+        <div id="sign-in-card" class="card" style="max-width: 30rem;">
+            <ul class="col nav nav-pills p-2" id="pills-tab" role="tablist">
+                <li id="navig-item" class="nav-item navleft text-center">
+                    <a class="nav-link active btl" id="navigator-left" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Login</a>
+                </li>
+                <li id="navig-item" class="nav-item navright text-center">
+                    <a class="nav-link btr" id="navigator-right" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Register</a>
+                </li>
+            </ul>
+            <div class="tab-content" id="pills-tabContent">
+                <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+                    <form method="POST" name="login" class="sign-in-form p-4" >
+                        <input type="email" name="email" class="form-control" placeholder="Email" value="" required="required">
+                        <input type="password" name="password" class="form-control my-2" placeholder="Password" value="" required="required">
+                        <button class="all-buttons col-6 btn btn-light mt-3 mx-auto" style="display: flex; justify-content: center; text-align: center; border:1px solid grey;">Login</button>
+                    </form>
                 </div>
+                <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+                    <form action="register" method="POST" name="register" class="sign-in-form p-4">
+                        <input type="text" name="name" class="form-control" placeholder="Name" value=""  required="required">
+                        <input type="text" name="surname" class="form-control my-2" placeholder="Surname" value=""  required="required">
+                        <input type="text" name="alias" class="form-control" placeholder="Username" value=""  required="required">
+                        <input type="email" name="email" class="form-control my-2" placeholder="Email" value=""  required="required">
+                        <input type="password" name="password" class="form-control" placeholder="Password" value=""  required="required">
+                        <button class="all-buttons col-6 btn btn-light btn-block mt-3 mx-auto" style="display: flex; justify-content: center; text-align: center; border:1px solid grey;" href="register">Register</button>
+                    </form>
+                </div>  
             </div>
         </div>
-    </div>    
+    </div>  
 </div>
 
 {{> footer}}
